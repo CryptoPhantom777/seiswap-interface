@@ -95,11 +95,6 @@ export function BridgeMenu() {
               Celer <span style={{ fontSize: '11px', textDecoration: 'none !important' }}>↗</span>
             </div>
           </MenuItem>
-          <MenuItem href="https://app.multichain.org">
-            <div>
-              Multichain <span style={{ fontSize: '11px', textDecoration: 'none !important' }}>↗</span>
-            </div>
-          </MenuItem>
         </Menu>
       )}
     </div>
