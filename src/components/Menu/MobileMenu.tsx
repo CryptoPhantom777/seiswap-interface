@@ -8,6 +8,7 @@ import { usePopper } from 'react-popper'
 
 import { NavLink, useLocation } from 'react-router-dom'
 import { BridgeMenu } from './BridgeMenu'
+import { OnrampMenu } from './OnrampMenu'
 import { useTranslation } from 'react-i18next'
 
 const activeClassName = 'ACTIVE'
@@ -142,6 +143,7 @@ export function MobileMenu() {
             {t('Stake')}
           </StyledNavLink>
           <BridgeMenu />
+          <OnrampMenu />
         </Menu>
       )}
     </div>

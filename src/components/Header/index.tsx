@@ -11,6 +11,7 @@ import styled from 'styled-components/macro'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { BridgeMenu } from '../Menu/BridgeMenu'
+import { OnrampMenu } from '../Menu/OnrampMenu'
 import { MobileMenu } from '../Menu/MobileMenu'
 
 // import { ExternalLink } from '../../theme'
@@ -352,10 +353,11 @@ export default function Header() {
             {t('Stake')}
           </StyledNavLink>
           <BridgeMenu />
-          <StyledExternalLink id={`charts-nav-link`} href="https://info.diffusion.fi">
+          <OnrampMenu />
+          {/* <StyledExternalLink id={`charts-nav-link`} href="https://info.diffusion.fi">
             {t('Charts')}
             <sup>↗</sup>
-          </StyledExternalLink>
+          </StyledExternalLink> */}
         </HeaderLinks>
       </HideSmall>
       <HeaderControls>

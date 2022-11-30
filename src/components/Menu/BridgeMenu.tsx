@@ -8,7 +8,7 @@ import { usePopper } from 'react-popper'
 
 import { MenuItem } from './index'
 
-const StyledBridgeButton = styled.div<{ isActive?: boolean }>`
+export const StyledBridgeButton = styled.div<{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
   border-radius: 3rem;
@@ -35,7 +35,7 @@ const StyledBridgeButton = styled.div<{ isActive?: boolean }>`
   }
 `
 
-const Menu = styled.div`
+export const Menu = styled.div`
   min-width: 8.125rem;
   background: ${({ theme }) => `linear-gradient(90deg, ${theme.dark0} 0%, ${theme.dark2} 35%, ${theme.dark0} 100%);`};
   box-shadow: 0 0 5px rgba(39, 210, 234, 0.2), 0 0 7px rgba(39, 210, 234, 0.2);
