@@ -47,11 +47,11 @@ const Container = styled.div<{ hideInput: boolean }>`
   border-radius: ${({ hideInput }) => (hideInput ? '12px' : '12px')};
   border: 1px solid ${({ theme, hideInput }) => (hideInput ? ' transparent' : theme.primaryTransparent)};
   width: ${({ hideInput }) => (hideInput ? '100%' : 'initial')};
-  :focus,
-  :hover {
-    border: 1px solid ${({ theme, hideInput }) => (hideInput ? ' transparent' : theme.primary1_30)};
-    box-shadow: 0 0 5px rgba(39, 210, 234, 0.15), 0 0 10px rgba(39, 210, 234, 0.3);
-  }
+  // :focus,
+  // :hover {
+  //   border: 1px solid ${({ theme, hideInput }) => (hideInput ? ' transparent' : theme.primary1_30)};
+  //   box-shadow: 0 0 5px rgba(230, 230, 230, 0.15), 0 0 10px rgba(230, 230, 230, 0.3);
+  // }
 `
 
 const CurrencySelect = styled(ButtonGray)<{ selected: boolean; hideInput?: boolean }>`
@@ -66,7 +66,7 @@ const CurrencySelect = styled(ButtonGray)<{ selected: boolean; hideInput?: boole
   outline: none;
   cursor: pointer;
   user-select: none;
-  border: 1px solid ${({ selected, theme }) => (!selected ? '#24C5E0' ?? 'transparent' : theme.primaryTransparent)};
+  border: 1px solid ${({ selected, theme }) => (!selected ? '#EEEEEE' ?? 'transparent' : theme.primaryTransparent)};
   height: ${({ hideInput }) => (hideInput ? '2.8rem' : '2.4rem')};
   width: ${({ hideInput }) => (hideInput ? '100%' : 'initial')};
   padding: 0 8px;

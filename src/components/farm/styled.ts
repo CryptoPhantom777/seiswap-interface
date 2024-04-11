@@ -79,7 +79,6 @@ export const DataRow = styled(RowBetween)`
     flex-direction: column;
     gap: 12px;
   `};
-  ${Glow}
 `
 
 export const DataButtonRow = styled(RowBetween)`

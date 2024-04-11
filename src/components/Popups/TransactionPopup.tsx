@@ -28,7 +28,7 @@ export default function TransactionPopup({
 
   return (
     <RowNoFlex>
-      <Confetti
+      {/*<Confetti
         colors={['#27D2EA', '#25CBE5', '#1dacc2', '#2a8d9c', '#22646ea', '#0C5C92']}
         recycle={false}
         width={920}
@@ -45,7 +45,7 @@ export default function TransactionPopup({
           ctx.stroke()
           ctx.closePath()
         }}
-      />
+      />*/}
       <div style={{ paddingRight: 16 }}>
         {success ? <CheckCircle color={theme.green1} size={24} /> : <AlertCircle color={theme.red1} size={24} />}
       </div>

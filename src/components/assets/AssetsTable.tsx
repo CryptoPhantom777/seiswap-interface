@@ -21,11 +21,10 @@ export const AssetsContainer = styled(Column)`
 
   background: ${({ theme }) =>
     `linear-gradient(90deg, ${theme.darkTransparent} 0%, ${theme.secondary1_30} 35%, ${theme.darkTransparent} 100%);`};
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.3);
+  border: 1px solid rgba(187, 187, 187, 0.7);
+  box-shadow: 0 0 5px rgba(230, 230, 230, 0.1), 0 0 7px rgba(230, 230, 230, 0.3);
   border-radius: 8px;
   margin-bottom: 50px;
-  ${Glow}
 `
 
 export function AssetsTable({ headers, children }: { headers?: string[]; children?: React.ReactNode }) {
@@ -58,18 +57,18 @@ export const AssetRow = styled(Link)`
   color: ${({ theme }) => theme.text1};
   font-size: 1.1rem;
   //border: 1px solid rgba(12, 92, 146, 0.2);
-  //box-shadow: 0 0 5px rgba(39, 210, 234, 0.05), 0 0 7px rgba(39, 210, 234, 0.05);
+  //box-shadow: 0 0 5px rgba(230, 230, 230, 0.05), 0 0 7px rgba(230, 230, 230, 0.05);
   :hover,
   :focus {
     color: ${({ theme }) => theme.text2};
     border: 1px solid rgba(12, 92, 146, 0.7);
-    box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.1);
+    box-shadow: 0 0 5px rgba(230, 230, 230, 0.1), 0 0 7px rgba(230, 230, 230, 0.1);
     background: linear-gradient(
       264deg,
       rgba(16, 16, 18, 0.1) 0%,
-      rgba(39, 210, 234, 0.05) 25%,
+      rgba(230, 230, 230, 0.05) 25%,
       rgba(16, 16, 18, 0.1) 50%,
-      rgba(39, 210, 234, 0.05) 75%,
+      rgba(230, 230, 230, 0.05) 75%,
       rgba(16, 16, 18, 0.1) 100%
     );
   }

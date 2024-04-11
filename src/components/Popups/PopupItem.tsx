@@ -21,10 +21,9 @@ export const Popup = styled.div`
   display: inline-block;
   width: 100%;
   padding: 1em;
-  background: ${({ theme }) =>
-    `linear-gradient(90deg, ${theme.darkTransparent} 0%, ${theme.secondary1_30} 50%, ${theme.darkTransparent} 100%);`};
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.3);
+  background: ${({ theme }) => `${theme.secondary1_30}`};
+  border: 1px solid rgba(187, 187, 187, 0.7);
+  box-shadow: 0 0 5px rgba(230, 230, 230, 0.1), 0 0 7px rgba(230, 230, 230, 0.3);
   position: relative;
   border-radius: 8px;
   padding: 20px;
@@ -50,54 +49,54 @@ const Fader = styled.div`
 const AnimatedFader = animated(Fader)
 
 export default function PopupItem({
-  removeAfterMs,
-  content,
-  popKey,
+    removeAfterMs,
+    content,
+    popKey,
 }: {
-  removeAfterMs: number | null
-  content: PopupContent
-  popKey: string
+    removeAfterMs: number | null
+    content: PopupContent
+    popKey: string
 }) {
-  const removePopup = useRemovePopup()
-  const removeThisPopup = useCallback(() => removePopup(popKey), [popKey, removePopup])
-  useEffect(() => {
-    if (removeAfterMs === null) return undefined
+    const removePopup = useRemovePopup()
+    const removeThisPopup = useCallback(() => removePopup(popKey), [popKey, removePopup])
+    useEffect(() => {
+        if (removeAfterMs === null) return undefined
 
-    const timeout = setTimeout(() => {
-      removeThisPopup()
-    }, removeAfterMs)
+        const timeout = setTimeout(() => {
+            removeThisPopup()
+        }, removeAfterMs)
 
-    return () => {
-      clearTimeout(timeout)
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [removeAfterMs, removeThisPopup])
+
+    const theme = useContext(ThemeContext)
+
+    let popupContent
+    if ('txn' in content) {
+        const {
+            txn: { hash, success, summary },
+        } = content
+        popupContent = <TransactionPopup hash={hash} success={success} summary={summary} />
+    } else if ('listUpdate' in content) {
+        const {
+            listUpdate: { listUrl, oldList, newList, auto },
+        } = content
+        popupContent = <ListUpdatePopup popKey={popKey} listUrl={listUrl} oldList={oldList} newList={newList} auto={auto} />
     }
-  }, [removeAfterMs, removeThisPopup])
 
-  const theme = useContext(ThemeContext)
+    const faderStyle = useSpring({
+        from: { width: '100%' },
+        to: { width: '0%' },
+        config: { duration: removeAfterMs ?? undefined },
+    })
 
-  let popupContent
-  if ('txn' in content) {
-    const {
-      txn: { hash, success, summary },
-    } = content
-    popupContent = <TransactionPopup hash={hash} success={success} summary={summary} />
-  } else if ('listUpdate' in content) {
-    const {
-      listUpdate: { listUrl, oldList, newList, auto },
-    } = content
-    popupContent = <ListUpdatePopup popKey={popKey} listUrl={listUrl} oldList={oldList} newList={newList} auto={auto} />
-  }
-
-  const faderStyle = useSpring({
-    from: { width: '100%' },
-    to: { width: '0%' },
-    config: { duration: removeAfterMs ?? undefined },
-  })
-
-  return (
-    <Popup>
-      <StyledClose color={theme.text2} onClick={removeThisPopup} />
-      {popupContent}
-      {removeAfterMs !== null ? <AnimatedFader style={faderStyle} /> : null}
-    </Popup>
-  )
+    return (
+        <Popup>
+            <StyledClose color={theme.text2} onClick={removeThisPopup} />
+            {popupContent}
+            {removeAfterMs !== null ? <AnimatedFader style={faderStyle} /> : null}
+        </Popup>
+    )
 }

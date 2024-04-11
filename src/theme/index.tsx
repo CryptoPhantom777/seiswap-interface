@@ -48,8 +48,8 @@ export function colors(darkMode: boolean): Colors {
 
     // backgrounds / greys
     bg01: 'black',
-    bg0: darkMode ? 'rgba(16, 16, 18, 0.9)' : 'rgba(16, 16, 18, 0.9)',
-    bg1: darkMode ? 'rgba(16, 16, 18, 0.9)' : 'rgba(16, 16, 18, 0.9)',
+    bg0: darkMode ? '#101010' : '#101010',
+    bg1: darkMode ? '#161618' : '#161618',
     bg2: darkMode ? '#191B1F' : '#EDEEF2',
     bg3: darkMode ? '#40444F' : '#CED0D9',
     bg4: darkMode ? '#565A69' : '#888D9B',
@@ -61,22 +61,22 @@ export function colors(darkMode: boolean): Colors {
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#27D2EA' : '#27D2EA',
-    primary2: darkMode ? '#25CBE5' : '#25CBE5',
-    primary3: darkMode ? '#1dacc2' : '#1dacc2',
-    primary4: darkMode ? '#2a8d9c' : '#2a8d9c',
-    primary5: darkMode ? '#22646eae' : '#22646eae',
+    primary1: darkMode ? '#a7a2aA' : '#a7a2aA',
+    primary2: darkMode ? '#959B95' : '#959B95',
+    primary3: darkMode ? '#8d8c82' : '#8d8c82',
+    primary4: darkMode ? '#7a7d7c' : '#7a7d7c',
+    primary5: darkMode ? '#62646e' : '#22646e',
 
-    primary1_30: 'rgba(39, 210, 234, 0.5)',
-    primaryTransparent: 'rgba(39, 210, 234, 0.2)',
+    primary1_30: 'rgba(230, 230, 230, 0.5)',
+    primaryTransparent: 'rgba(230, 230, 230, 0.2)',
 
     // color text
-    primaryText1: darkMode ? '#27D2EA' : '#27D2EA',
+    primaryText1: darkMode ? '#c7c2cA' : '#c7c2cA',
 
     // secondary colors
-    secondary1: darkMode ? '#0C5C92' : '#0C5C92',
-    secondary2: darkMode ? '#17000b26' : '#F6DDE8',
-    secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+    secondary1: darkMode ? '#5C5C52' : '#5C5C52',
+    secondary2: darkMode ? '#17000b' : '#F6DDE8',
+    secondary3: darkMode ? '#17000b' : '#FDEAF1',
 
     secondary1_30: 'rgba(12, 92, 146, 0.3)',
     secondary1_10: 'rgba(12, 92, 146, 0.1)',
@@ -84,7 +84,7 @@ export function colors(darkMode: boolean): Colors {
     dark0: 'rgba(16, 16, 18, 0.9)',
     dark1: 'rgba(12,26,35,0.9)',
     //dark2: 'rgba(10,14,36, 0.9)',
-    dark2: 'rgba(9, 41, 70, 0.9)',
+    dark2: '#141414',
     dark3: 'rgba(10,19,51, 1)',
     dark4: 'rgba(14,28,67,1)',
     dark5: 'transparent',
@@ -92,7 +92,7 @@ export function colors(darkMode: boolean): Colors {
     darkTransparent2: 'rgba(16, 16, 18, 0.32)',
     darkTransparent3: 'rgba(16, 16, 18, 0.8)',
 
-    bgGradient: `linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(10,14,36, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%)`,
+    bgGradient: `black`,
 
     // other
     red1: 'rgba(242,65,65,0.3)',
@@ -218,12 +218,7 @@ export const ThemedBackground = styled.div<{ backgroundColor?: string | undefine
   /* width: 200vw; */
   height: 200vh;
   mix-blend-mode: color;
-  /* background: ${({ backgroundColor }) =>
-    `radial-gradient(50% 50% at 50% 50%, ${
-      backgroundColor ? backgroundColor : '#fc077d10'
-    } 0%, rgba(255, 255, 255, 0) 100%)`}; */
-  background: transparent radial-gradient(closest-side at 50% 50%, #0c5e94 0%, #20212400 100%) 0% 0% no-repeat
-    padding-box;
+  background: black;
   opacity: 0.6;
   transform: translateY(-100vh);
   will-change: background;

@@ -307,13 +307,12 @@ export function StakingBalance() {
 const BalanceRow = styled(RowBetween)`
   background: ${({ theme }) =>
     `linear-gradient(90deg, ${theme.darkTransparent} 0%, ${theme.secondary1_30} 50%, ${theme.darkTransparent} 100%);`};
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.3);
+  border: 1px solid rgba(187, 187, 187, 0.7);
+  box-shadow: 0 0 5px rgba(230, 230, 230, 0.1), 0 0 7px rgba(230, 230, 230, 0.3);
   border-radius: 8px;
   padding: 2% 5%;
   font-size: 22px;
   backdrop-filter: blur(4px) saturate(150%);
-  ${Glow}
 `
 
 const BalanceColumn = styled(AutoColumn)`

@@ -28,7 +28,7 @@ import DiffusionLogo from '../../assets/svg/logo.svg'
 // import { ExternalLink } from 'theme/components'
 
 const Logo = styled.img`
-  height: 30px;
+  height: 16px;
 `
 
 const HeaderFrame = styled.div<{ showBackground: boolean }>`
@@ -46,7 +46,7 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   position: relative;
 
   /* Background slide effect on scroll. */
-  background-image: ${({ theme }) => `linear-gradient(to bottom, transparent 50%, ${theme.bg0} 50% )}}`}
+  background-image: ${({ theme }) => `${theme.bg0}`}
   background-position: ${({ showBackground }) => (showBackground ? '0 -100%' : '0 0')};
   background-size: 100% 200%;
   box-shadow: 0px 0px 0px 1px ${({ theme, showBackground }) => (showBackground ? theme.bg2 : 'transparent;')};
@@ -115,14 +115,10 @@ const HeaderRow = styled(RowFixed)`
 `
 
 const HeaderLinks = styled(Row)`
-  background: ${({ theme }) =>
-    `linear-gradient(90deg, ${theme.darkTransparent2} 0%, ${theme.secondary1_10} 50%, ${theme.darkTransparent2} 100%);`};
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.2), 0 0 7px rgba(39, 210, 234, 0.2);
+  background: ${({ theme }) => `${theme.darkTransparent2}`};
   margin-left: 4%;
   width: fit-content;
   padding: 4px;
-  border-radius: 10px;
   display: grid;
   grid-auto-flow: column;
   grid-gap: 10px;
@@ -136,17 +132,13 @@ const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: ${({ theme }) =>
-    `linear-gradient(90deg, ${theme.darkTransparent2} 0%, ${theme.secondary1_10} 50%, ${theme.darkTransparent2} 100%);`};
+  background: ${({ theme }) => `${theme.darkTransparent2}`};
   border-radius: 8px;
   white-space: nowrap;
   width: 100%;
   cursor: pointer;
-  border: 1px solid rgba(12, 92, 146, 0.3);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.1);
 
   :focus {
-    border: 1px solid blue;
   }
 `
 
@@ -198,7 +190,7 @@ const Title = styled.a`
 const activeClassName = 'ACTIVE'
 
 const StyledNavLink = styled(NavLink).attrs({
-  activeClassName,
+    activeClassName,
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
@@ -286,105 +278,75 @@ export const StyledMenuButton = styled.button`
 `
 
 const NETWORK_LABELS: Record<ChainId, string> = {
-  [ChainId.TESTNET]: 'Evmos Testnet',
-  [ChainId.MAINNET]: 'Evmos',
-  [ChainId.RINKEBY]: 'Rinkeby',
+    [ChainId.TESTNET]: 'Evmos Testnet',
+    [ChainId.MAINNET]: 'Evmos',
+    [ChainId.RINKEBY]: 'Rinkeby',
 }
 
 export default function Header() {
-  const { account, chainId } = useActiveWeb3React()
-  const { t } = useTranslation()
-  // const [isBridgeOpen, setIsBridgeOpen] = useState(false)
+    const { account, chainId } = useActiveWeb3React()
+    const { t } = useTranslation()
+    // const [isBridgeOpen, setIsBridgeOpen] = useState(false)
 
-  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  // const [isDark] = useDarkModeManager()
+    const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
+    // const [isDark] = useDarkModeManager()
 
-  // const [showUniBalanceModal, setShowUniBalanceModal] = useState(false)
+    // const [showUniBalanceModal, setShowUniBalanceModal] = useState(false)
 
-  const scrollY = useScrollPosition()
+    const scrollY = useScrollPosition()
 
-  return (
-    <HeaderFrame showBackground={scrollY > 45}>
-      {/* <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
+    return (
+        <HeaderFrame showBackground={scrollY > 45}>
+            {/* <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal> */}
-      <HeaderRow>
-        <Title href=".">
-          <Logo src={DiffusionLogo} />
-        </Title>
-      </HeaderRow>
-      <HideSmall>
-        <HeaderLinks>
-          <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-            {t('swap')}
-          </StyledNavLink>
-          <StyledNavLink
-            id={`pool-nav-link`}
-            to={'/pool'}
-            isActive={(match, { pathname }) =>
-              Boolean(match) ||
-              pathname.startsWith('/add') ||
-              pathname.startsWith('/remove') ||
-              pathname.startsWith('/increase') ||
-              pathname.startsWith('/find')
-            }
-          >
-            {t('pool')}
-          </StyledNavLink>
-          <StyledNavLink
-            id={`assets-nav-link`}
-            to={'/assets'}
-            isActive={(match, { pathname }) => Boolean(match) || pathname.startsWith('/assets')}
-          >
-            {t('Assets')}
-          </StyledNavLink>
-          <StyledNavLink
-            id={`farm-nav-link`}
-            to={'/farm'}
-            isActive={(match, { pathname }) => Boolean(match) || pathname.startsWith('/farm')}
-          >
-            {t('Farm')}
-          </StyledNavLink>
-          <StyledNavLink
-            id={`stake-nav-link`}
-            to={'/stake'}
-            isActive={(match, { pathname }) => Boolean(match) || pathname.startsWith('/stake')}
-          >
-            {t('Stake')}
-          </StyledNavLink>
-          <BridgeMenu />
-          <OnrampMenu />
-          {/* <StyledExternalLink id={`charts-nav-link`} href="https://info.diffusion.fi">
+            <HeaderRow>
+                <Title href=".">
+                    <Logo src={DiffusionLogo} />
+                </Title>
+            </HeaderRow>
+            <HideSmall>
+                <HeaderLinks>
+                    <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
+                        {t('swap')}
+                    </StyledNavLink>
+                    <StyledNavLink
+                        id={`pool-nav-link`}
+                        to={'/pool'}
+                        isActive={(match, { pathname }) =>
+                            Boolean(match) ||
+                            pathname.startsWith('/add') ||
+                            pathname.startsWith('/remove') ||
+                            pathname.startsWith('/increase') ||
+                            pathname.startsWith('/find')
+                        }
+                    >
+                        {t('pool')}
+                    </StyledNavLink>
+                    {/*<BridgeMenu />*/}
+                    {/* <StyledExternalLink id={`charts-nav-link`} href="https://info.diffusion.fi">
             {t('Charts')}
             <sup>↗</sup>
           </StyledExternalLink> */}
-        </HeaderLinks>
-      </HideSmall>
-      <HeaderControls>
-        <HeaderElement>
-          <HideSmall>
-            {chainId && NETWORK_LABELS[chainId] && (
-              <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
-            )}
-          </HideSmall>
-          <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-            {account && userEthBalance ? (
-              <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                {userEthBalance?.toSignificant(4)} <span style={{ color: '#27D2EA' }}>EVMOS</span>
-              </BalanceText>
-            ) : null}
-            <Web3Status />
-          </AccountElement>
-        </HeaderElement>
-        <HeaderElementWrap>
-          <HideLarge>
-            <MobileMenu />
-          </HideLarge>
-        </HeaderElementWrap>
-        <HeaderElementWrap>
-          <Menu />
-        </HeaderElementWrap>
-      </HeaderControls>
-    </HeaderFrame>
-  )
+                </HeaderLinks>
+            </HideSmall>
+            <HeaderControls>
+                <HeaderElement>
+                    <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+                        {account && userEthBalance ? (
+                            <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+                                {userEthBalance?.toSignificant(4)} <span style={{ color: '#27D2EA' }}>EVMOS</span>
+                            </BalanceText>
+                        ) : null}
+                        <Web3Status />
+                    </AccountElement>
+                </HeaderElement>
+                <HeaderElementWrap>
+                    <HideLarge>
+                        <MobileMenu />
+                    </HideLarge>
+                </HeaderElementWrap>
+            </HeaderControls>
+        </HeaderFrame>
+    )
 }

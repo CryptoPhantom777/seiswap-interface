@@ -17,10 +17,9 @@ const Base = styled(RebassButton)<{
   width: ${({ width }) => (width ? width : '100%')};
   font-weight: 500;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 15px;
   border-radius: ${({ borderRadius }) => borderRadius && borderRadius};
   outline: none;
-  border: 1px solid ${({ theme }) => theme.secondary1};
   color: white;
   text-decoration: none;
   display: flex;
@@ -53,8 +52,7 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background: ${({ theme }) =>
-    `linear-gradient(264deg, ${theme.secondary1_30} 0%, ${theme.darkTransparent} 33%),  ${theme.secondary1_30} 66%`};
+  background: ${({ theme }) => `${theme.secondary1_30}`};
   border: 1px solid ${({ theme }) => theme.primary1};
   color: white;
   &:focus {
@@ -62,8 +60,7 @@ export const ButtonPrimary = styled(Base)`
     background-color: ${({ theme }) => darken(0.05, theme.primary1)};
   }
   &:hover {
-    background: ${({ theme }) =>
-      `linear-gradient(264deg, ${theme.primary1_30} 0%, ${theme.darkTransparent} 50%),  ${theme.primary1_30} 100%`};
+    background: ${({ theme }) => `${theme.primary1_30}`};
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.1, theme.primary1)};
@@ -83,9 +80,7 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background: transparent
-    linear-gradient(264deg, ${({ theme }) => theme.primary1_30} 0%, ${({ theme }) => theme.secondary1_30} 100%) 0% 0%
-    no-repeat padding-box;
+  background: ${({ theme }) => theme.secondary1_30};
   background-color: ${({ theme }) => theme.primary5};
   color: ${({ theme }) => theme.primaryText1};
   font-size: 16px;
@@ -186,7 +181,7 @@ export const ButtonUNIGradient = styled(ButtonPrimary)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: black;
   width: fit-content;
   position: relative;
   cursor: pointer;
@@ -201,24 +196,23 @@ export const ButtonUNIGradient = styled(ButtonPrimary)`
 `
 
 export const ButtonOutlined = styled(Base)`
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.3);
+  border: 1px solid rgba(187, 187, 187, 0.7);
   background-color: transparent;
   color: ${({ theme }) => theme.text1};
 
-  &:focus {
-    box-shadow: 0 0 5px rgba(39, 210, 234, 0.5), 0 0 7px rgba(39, 210, 234, 0.8);
-  }
-  &:hover {
-    box-shadow: 0 0 5px rgba(39, 210, 234, 0.5), 0 0 7px rgba(39, 210, 234, 0.8);
-  }
-  &:active {
-    box-shadow: 0 0 5px rgba(39, 210, 234, 0.5), 0 0 7px rgba(39, 210, 234, 0.8);
-  }
-  &:disabled {
-    opacity: 50%;
-    cursor: auto;
-  }
+  // &:focus {
+  //   box-shadow: 0 0 5px rgba(230, 230, 230, 0.5), 0 0 7px rgba(230, 230, 230, 0.8);
+  // }
+  // &:hover {
+  //   box-shadow: 0 0 5px rgba(230, 230, 230, 0.5), 0 0 7px rgba(230, 230, 230, 0.8);
+  // }
+  // &:active {
+  //   box-shadow: 0 0 5px rgba(230, 230, 230, 0.5), 0 0 7px rgba(230, 230, 230, 0.8);
+  // }
+  // &:disabled {
+  //   opacity: 50%;
+  //   cursor: auto;
+  // }
 `
 
 export const ButtonEmpty = styled(Base)`
@@ -385,7 +379,6 @@ export function ButtonRadio({ active, ...rest }: { active?: boolean } & ButtonPr
 }
 
 const ActiveOutlined = styled(ButtonOutlined)`
-  border: 1px solid;
   border-color: ${({ theme }) => theme.primary1};
 `
 
@@ -416,7 +409,7 @@ export function ButtonRadioChecked({ active = false, children, ...rest }: { acti
 
   if (!active) {
     return (
-      <ButtonOutlined borderRadius="12px" padding="12px 8px" {...rest}>
+      <ButtonOutlined borderRadius="15px" padding="12px 8px" {...rest}>
         {<RowBetween>{children}</RowBetween>}
       </ButtonOutlined>
     )

@@ -18,7 +18,7 @@ const StyledNavLink = styled(NavLink).attrs({
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
-  border-radius: 8px;
+  border-radius: 15px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -43,23 +43,20 @@ const StyledNavLink = styled(NavLink).attrs({
 const StyledBridgeButton = styled.div<{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
-  border-radius: 8px;
+  border-radius: 15px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text3};
+  color: ${({ theme }) => theme.primaryText1};
   font-size: 1rem;
   width: fit-content;
   font-weight: 500;
   padding: 8px 35px;
-  background: ${({ theme }) =>
-    `linear-gradient(90deg, ${theme.darkTransparent2} 0%, ${theme.secondary1_10} 50%, ${theme.darkTransparent2} 100%);`};
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.2), 0 0 7px rgba(39, 210, 234, 0.2);
+  background: ${({ theme }) => `${theme.primary5}`};
   ${({ isActive }) =>
     isActive &&
     css`
-      border-radius: 8px;
+      border-radius: 15px;
       color: ${({ theme }) => theme.text3};
       background-color: ${({ theme }) => theme.primaryTransparent};
     `}
@@ -72,10 +69,9 @@ const StyledBridgeButton = styled.div<{ isActive?: boolean }>`
 
 const Menu = styled.div`
   min-width: 8.125rem;
-  background: ${({ theme }) => `linear-gradient(90deg, ${theme.dark0} 0%, ${theme.dark2} 50%, ${theme.dark0} 100%);`};
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.2), 0 0 7px rgba(39, 210, 234, 0.2);
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  border-radius: 8px;
+  background: ${({ theme }) => `${theme.dark2}`};
+  border: 2px solid rgba(187, 187, 187, 0.7);
+  border-radius: 15px;
   backdrop-filter: blur(4px);
   z-index: 100;
 `
@@ -132,18 +128,7 @@ export function MobileMenu() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink
-            id={`farm-nav-link`}
-            to={'/farm'}
-            isActive={(match, { pathname }) => Boolean(match) || pathname.startsWith('/farm')}
-          >
-            {t('Farm')}
-          </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/stake'}>
-            {t('Stake')}
-          </StyledNavLink>
-          <BridgeMenu />
-          <OnrampMenu />
+          {/*<BridgeMenu />*/}
         </Menu>
       )}
     </div>

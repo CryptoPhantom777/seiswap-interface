@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const ArrowWrapper = styled.div<{ clickable: boolean }>`
   padding: 4px;
-  border-radius: 6px;
+  border-radius: 2px;
   height: 32px;
   width: 32px;
   position: relative;
@@ -24,7 +24,7 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
   /* transform: rotate(90deg); */
   background-color: ${({ theme }) => theme.dark0};
   border: 4px solid ${({ theme }) => theme.darkTransparent};
-  box-shadow: 0 0 2px rgba(39, 210, 234, 0.2), 0 0 5px rgba(39, 210, 234, 0.3);
+  // box-shadow: 0 0 2px rgba(230, 230, 230, 0.2), 0 0 5px rgba(230, 230, 230, 0.3);
   z-index: 2;
   ${({ clickable }) =>
     clickable
@@ -32,7 +32,7 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
           :hover {
             cursor: pointer;
             opacity: 0.8;
-            box-shadow: 0 0 5px rgba(39, 210, 234, 0.4), 0 0 10px rgba(39, 210, 234, 0.6);
+            // box-shadow: 0 0 5px rgba(230, 230, 230, 0.4), 0 0 10px rgba(230, 230, 230, 0.6);
           }
         `
       : null}

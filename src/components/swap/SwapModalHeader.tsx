@@ -35,7 +35,6 @@ export const ArrowWrapper = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.dark0};
   border: 4px solid ${({ theme }) => theme.darkTransparent};
-  box-shadow: 0 0 2px rgba(39, 210, 234, 0.2), 0 0 5px rgba(39, 210, 234, 0.3);
   z-index: 2;
 `
 

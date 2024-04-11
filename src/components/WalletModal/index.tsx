@@ -237,7 +237,7 @@ export default function WalletModal({
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isMetamask = window.ethereum && window.ethereum.isMetaMask
-    return Object.keys(SUPPORTED_WALLETS).map((key) => {
+    const options = Object.keys(SUPPORTED_WALLETS).map((key) => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
       if (isMobile) {
@@ -246,7 +246,7 @@ export default function WalletModal({
           return null
         }
 
-        if (!window.web3 && !window.ethereum && option.mobile) {
+        if (window.web3 || window.ethereum) {
           return (
             <Option
               onClick={() => {
@@ -318,6 +318,19 @@ export default function WalletModal({
         )
       )
     })
+    if (options.length == 0) {
+        options.push(
+              <Option
+                id={`connect-injected`}
+                key={`injected`}
+                color={'#E8831D'}
+                header={'Install Metamask'}
+                subheader={null}
+                link={'https://metamask.io/'}
+                icon={MetamaskIcon}
+              />)
+    }
+    return options
   }
 
   function getModalContent() {
@@ -330,7 +343,7 @@ export default function WalletModal({
           <HeaderRow>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>Please connect to the appropriate Evmos network.</h5>
+              <h5>Please connect to the appropriate network.</h5>
             ) : (
               'Error connecting. Try refreshing the page.'
             )}

@@ -10,9 +10,9 @@ import styled, { css } from 'styled-components'
 // import PortisIcon from '../../assets/images/portisIcon.png'
 // import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import {
-  // fortmatic,
-  injected,
-  //  portis, walletconnect, walletlink
+    // fortmatic,
+    injected,
+    //  portis, walletconnect, walletlink
 } from '../../connectors'
 import { NetworkContextName } from '../../constants/misc'
 import useENSName from '../../hooks/useENSName'
@@ -43,7 +43,7 @@ const Web3StatusGeneric = styled(ButtonSecondary)`
   width: 100%;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
   user-select: none;
   :focus {
@@ -52,7 +52,6 @@ const Web3StatusGeneric = styled(ButtonSecondary)`
 `
 const Web3StatusError = styled(Web3StatusGeneric)`
   background-color: ${({ theme }) => theme.red1};
-  border: 1px solid ${({ theme }) => theme.red1};
   color: ${({ theme }) => theme.white};
   font-weight: 500;
   :hover,
@@ -61,50 +60,42 @@ const Web3StatusError = styled(Web3StatusGeneric)`
   }
 `
 
-const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
-  background-color: ${({ theme }) =>
-    `linear-gradient(90deg, ${theme.dark0} 0%, ${theme.dark2} 35%, ${theme.dark0} 100%);`};
+const Web3StatusConnect = styled(Web3StatusGeneric) <{ faded?: boolean }>`
+  background-color: ${({ theme }) => `${theme.dark2}`};
   border: none;
   color: ${({ theme }) => theme.primaryText1};
   font-weight: 500;
 
   :hover,
   :focus {
-    border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
     color: ${({ theme }) => theme.primaryText1};
   }
 
   ${({ faded }) =>
-    faded &&
-    css`
-      //box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.1);
-      background: ${({ theme }) =>
-        `linear-gradient(90deg, ${theme.dark0} 0%, ${theme.dark2} 35%, ${theme.dark0} 100%);`};
-      border: 1px solid ${({ theme }) => theme.primary5};
+        faded &&
+        css`
+      background: ${({ theme }) => `${theme.primary5}`};
       color: ${({ theme }) => theme.primaryText1};
 
       :hover,
       :focus {
-        border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
         color: ${({ theme }) => darken(0.05, theme.primaryText1)};
       }
     `}
 `
 
-const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
-  background-color: ${({ pending }) => (pending ? 'rgba(39, 210, 234, 0.25)' : `rgba(39, 210, 234, 0.05)`)};
-  border: 1px double ${({ pending, theme }) => (pending ? theme.primary1 : `rgba(39, 210, 234, 0.08)`)};
+const Web3StatusConnected = styled(Web3StatusGeneric) <{ pending?: boolean }>`
+  background-color: ${({ pending }) => (pending ? 'rgba(230, 230, 230, 0.25)' : `rgba(230, 230, 230, 0.05)`)};
   color: ${({ pending, theme }) => (pending ? theme.white : theme.text1)};
   font-weight: 500;
   :hover,
   :focus {
     background-color: ${({ pending, theme }) =>
-      pending ? darken(0.05, theme.darkTransparent) : lighten(0.05, theme.darkTransparent)};
+        pending ? darken(0.05, theme.darkTransparent) : lighten(0.05, theme.darkTransparent)};
 
     :focus {
-      border: 1px solid
         ${({ pending, theme }) =>
-          pending ? darken(0.1, theme.primaryTransparent) : darken(0.1, theme.primaryTransparent)};
+        pending ? darken(0.1, theme.primaryTransparent) : darken(0.1, theme.primaryTransparent)};
     }
   }
 `
@@ -129,115 +120,115 @@ const NetworkIcon = styled(Activity)`
 
 // we want the latest one to come first, so return negative if a is after b
 function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
-  return b.addedTime - a.addedTime
+    return b.addedTime - a.addedTime
 }
 
 // eslint-disable-next-line react/prop-types
 function StatusIcon({ connector }: { connector: AbstractConnector }) {
-  if (connector === injected) {
-    return <Identicon />
-  }
-  // else if (connector === walletconnect) {
-  //   return (
-  //     <IconWrapper size={16}>
-  //       <img src={WalletConnectIcon} alt={''} />
-  //     </IconWrapper>
-  //   )
-  // } else if (connector === walletlink) {
-  //   return (
-  //     <IconWrapper size={16}>
-  //       <img src={CoinbaseWalletIcon} alt={''} />
-  //     </IconWrapper>
-  //   )
-  // } else if (connector === fortmatic) {
-  //   return (
-  //     <IconWrapper size={16}>
-  //       <img src={FortmaticIcon} alt={''} />
-  //     </IconWrapper>
-  //   )
-  // } else if (connector === portis) {
-  //   return (
-  //     <IconWrapper size={16}>
-  //       <img src={PortisIcon} alt={''} />
-  //     </IconWrapper>
-  //   )
-  // }
-  return null
+    if (connector === injected) {
+        return <Identicon />
+    }
+    // else if (connector === walletconnect) {
+    //   return (
+    //     <IconWrapper size={16}>
+    //       <img src={WalletConnectIcon} alt={''} />
+    //     </IconWrapper>
+    //   )
+    // } else if (connector === walletlink) {
+    //   return (
+    //     <IconWrapper size={16}>
+    //       <img src={CoinbaseWalletIcon} alt={''} />
+    //     </IconWrapper>
+    //   )
+    // } else if (connector === fortmatic) {
+    //   return (
+    //     <IconWrapper size={16}>
+    //       <img src={FortmaticIcon} alt={''} />
+    //     </IconWrapper>
+    //   )
+    // } else if (connector === portis) {
+    //   return (
+    //     <IconWrapper size={16}>
+    //       <img src={PortisIcon} alt={''} />
+    //     </IconWrapper>
+    //   )
+    // }
+    return null
 }
 
 function Web3StatusInner() {
-  const { t } = useTranslation()
-  const { account, connector, error } = useWeb3React()
+    const { t } = useTranslation()
+    const { account, connector, error } = useWeb3React()
 
-  const { ENSName } = useENSName(account ?? undefined)
+    const { ENSName } = useENSName(account ?? undefined)
 
-  const allTransactions = useAllTransactions()
+    const allTransactions = useAllTransactions()
 
-  const sortedRecentTransactions = useMemo(() => {
-    const txs = Object.values(allTransactions)
-    return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
-  }, [allTransactions])
+    const sortedRecentTransactions = useMemo(() => {
+        const txs = Object.values(allTransactions)
+        return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
+    }, [allTransactions])
 
-  const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
+    const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
 
-  const hasPendingTransactions = !!pending.length
-  const toggleWalletModal = useWalletModalToggle()
+    const hasPendingTransactions = !!pending.length
+    const toggleWalletModal = useWalletModalToggle()
 
-  if (account) {
-    return (
-      <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
-        {hasPendingTransactions ? (
-          <RowBetween>
-            <Text>{pending?.length} Pending</Text> <Loader stroke="white" />
-          </RowBetween>
-        ) : (
-          <>
-            <Text>{ENSName || shortenAddress(account)}</Text>
-          </>
-        )}
-        {!hasPendingTransactions && connector && <StatusIcon connector={connector} />}
-      </Web3StatusConnected>
-    )
-  } else if (error) {
-    return (
-      <Web3StatusError onClick={toggleWalletModal}>
-        <NetworkIcon />
-        <Text>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error'}</Text>
-      </Web3StatusError>
-    )
-  } else {
-    return (
-      <Web3StatusConnect id="connect-wallet" onClick={toggleWalletModal} faded={!account}>
-        <Text>{t('Connect to a wallet')}</Text>
-      </Web3StatusConnect>
-    )
-  }
+    if (account) {
+        return (
+            <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
+                {hasPendingTransactions ? (
+                    <RowBetween>
+                        <Text>{pending?.length} Pending</Text> <Loader stroke="white" />
+                    </RowBetween>
+                ) : (
+                    <>
+                        <Text>{ENSName || shortenAddress(account)}</Text>
+                    </>
+                )}
+                {!hasPendingTransactions && connector && <StatusIcon connector={connector} />}
+            </Web3StatusConnected>
+        )
+    } else if (error) {
+        return (
+            <Web3StatusError onClick={toggleWalletModal}>
+                <NetworkIcon />
+                <Text>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error'}</Text>
+            </Web3StatusError>
+        )
+    } else {
+        return (
+            <Web3StatusConnect id="connect-wallet" onClick={toggleWalletModal} faded={!account}>
+                <Text>{t('Connect to a wallet')}</Text>
+            </Web3StatusConnect>
+        )
+    }
 }
 
 export default function Web3Status() {
-  const { active, account } = useWeb3React()
-  const contextNetwork = useWeb3React(NetworkContextName)
+    const { active, account } = useWeb3React()
+    const contextNetwork = useWeb3React(NetworkContextName)
 
-  const { ENSName } = useENSName(account ?? undefined)
+    const { ENSName } = useENSName(account ?? undefined)
 
-  const allTransactions = useAllTransactions()
+    const allTransactions = useAllTransactions()
 
-  const sortedRecentTransactions = useMemo(() => {
-    const txs = Object.values(allTransactions)
-    return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
-  }, [allTransactions])
+    const sortedRecentTransactions = useMemo(() => {
+        const txs = Object.values(allTransactions)
+        return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
+    }, [allTransactions])
 
-  const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
-  const confirmed = sortedRecentTransactions.filter((tx) => tx.receipt).map((tx) => tx.hash)
+    const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
+    const confirmed = sortedRecentTransactions.filter((tx) => tx.receipt).map((tx) => tx.hash)
 
-  if (!contextNetwork.active && !active) {
-    return null
-  }
+    if (!contextNetwork.active && !active) {
+        return null
+    }
 
-  return (
-    <>
-      <Web3StatusInner />
-      <WalletModal ENSName={ENSName ?? undefined} pendingTransactions={pending} confirmedTransactions={confirmed} />
-    </>
-  )
+    return (
+        <>
+            <Web3StatusInner />
+            <WalletModal ENSName={ENSName ?? undefined} pendingTransactions={pending} confirmedTransactions={confirmed} />
+        </>
+    )
 }

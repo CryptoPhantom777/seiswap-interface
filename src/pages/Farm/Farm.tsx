@@ -58,14 +58,13 @@ const BottomSection = styled(AutoColumn)`
   border-radius: 8px;
   width: 100%;
   position: relative;
-  ${Glow}
 `
 
 const StyledBottomCard = styled(DataCard)<{ dim: any }>`
   background: ${({ theme }) =>
     `linear-gradient(90deg, ${theme.darkTransparent} 0%, ${theme.secondary1_30} 50%, ${theme.darkTransparent} 100%);`};
-  border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.3);
+  border: 1px solid rgba(187, 187, 187, 0.7);
+  box-shadow: 0 0 5px rgba(230, 230, 230, 0.1), 0 0 7px rgba(230, 230, 230, 0.3);
   opacity: ${({ dim }) => (dim ? 0.4 : 1)};
   //margin-top: -40px;
   padding: 0 1.25rem 1rem 1.25rem;
@@ -78,7 +77,7 @@ const VoteCard = styled(DataCard)`
     `linear-gradient(90deg, ${theme.darkTransparent} 0%, ${theme.secondary1_30} 35%, ${theme.darkTransparent} 100%);`};
   overflow: hidden;
   border: 1px solid rgba(12, 92, 146, 0.7);
-  box-shadow: 0 0 5px rgba(39, 210, 234, 0.1), 0 0 7px rgba(39, 210, 234, 0.3);
+  box-shadow: 0 0 5px rgba(230, 230, 230, 0.1), 0 0 7px rgba(230, 230, 230, 0.3);
 `
 
 const Heading = styled.div`

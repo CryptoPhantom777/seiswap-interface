@@ -42,7 +42,6 @@ export function FarmListPage() {
 
   return (
     <FarmListContainer>
-      <Tux />
       <NomadWarningBanner />
       <HeadingWithPotion heading="Farm" description="Earn fees and rewards by depositing and staking your LP tokens." />
       {/* {pools.map((pool) => pool.lpTokenAddress && <Pool key={pool.lpTokenAddress} {...pool} />).filter(isTruthy)} */}
