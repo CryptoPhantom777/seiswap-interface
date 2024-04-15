@@ -189,7 +189,7 @@ export default function WalletModal({
             try {
               await provider.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0x2329' }],
+                params: [{ chainId: '0xc4' }],
               })
             } catch (switchError: any) {
               if (switchError.code === 4902) {
@@ -198,18 +198,18 @@ export default function WalletModal({
                     method: 'wallet_addEthereumChain',
                     params: [
                       {
-                        chainId: '0x2329',
-                        chainName: 'EVMOS',
+                        chainId: '0xc4',
+                        chainName: 'OKB',
                         nativeCurrency: {
-                          name: 'EVMOS',
-                          symbol: 'EVMOS',
+                          name: 'OKB',
+                          symbol: 'OKB',
                           decimals: 18,
                         },
                         rpcUrls: [
-                          // 'https://evmos-rpc2.binary.host'
-                          'https://eth.bd.evmos.org:8545',
+                          // 'https://okb-rpc2.binary.host'
+                          'https://rpc.xlayer.tech',
                         ],
-                        blockExplorerUrls: ['https://evm.evmos.org'],
+                        blockExplorerUrls: ['https://evm.okb.org'],
                       },
                     ],
                   })

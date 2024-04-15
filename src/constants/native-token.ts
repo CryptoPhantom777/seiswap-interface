@@ -4,30 +4,30 @@ import { NativeCurrency } from '../sdk-core/entities/nativeCurrency'
 import invariant from 'tiny-invariant'
 import { WETH9_ADDRESS } from './addresses'
 
-export const WEVMOS = {
+export const WOKB = {
   // Mainly for unit tests
-  1: new Token(1, WETH9_ADDRESS[4], 18, 'WEVMOS', 'Wrapped Evmos'),
-  [ChainId.MAINNET]: new Token(ChainId.MAINNET, WETH9_ADDRESS[ChainId.MAINNET], 18, 'WEVMOS', 'Wrapped Evmos'),
-  [ChainId.TESTNET]: new Token(ChainId.TESTNET, WETH9_ADDRESS[ChainId.TESTNET], 18, 'WEVMOS', 'Wrapped Evmos'),
-  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, WETH9_ADDRESS[ChainId.RINKEBY], 18, 'WEVMOS', 'Wrapped Evmos'),
+  1: new Token(1, WETH9_ADDRESS[4], 18, 'WOKB', 'Wrapped Okb'),
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, WETH9_ADDRESS[ChainId.MAINNET], 18, 'WOKB', 'Wrapped Okb'),
+  [ChainId.TESTNET]: new Token(ChainId.TESTNET, WETH9_ADDRESS[ChainId.TESTNET], 18, 'WOKB', 'Wrapped Okb'),
+  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, WETH9_ADDRESS[ChainId.RINKEBY], 18, 'WOKB', 'Wrapped Okb'),
 }
-export const WETH9 = WEVMOS
+export const WETH9 = WOKB
 
-export class Evmos extends NativeCurrency {
+export class Okb extends NativeCurrency {
   protected constructor(chainId: number) {
-    super(chainId, 18, 'EVMOS', 'Evmos')
+    super(chainId, 18, 'OKB', 'Okb')
   }
 
   public get wrapped(): Token {
-    const weth9 = WEVMOS[this.chainId as ChainId]
+    const weth9 = WOKB[this.chainId as ChainId]
     invariant(!!weth9, 'WRAPPED')
     return weth9
   }
 
-  private static _etherCache: { [chainId: number]: Evmos } = {}
+  private static _etherCache: { [chainId: number]: Okb } = {}
 
-  public static onChain(chainId: number): Evmos {
-    return this._etherCache[chainId] ?? (this._etherCache[chainId] = new Evmos(chainId))
+  public static onChain(chainId: number): Okb {
+    return this._etherCache[chainId] ?? (this._etherCache[chainId] = new Okb(chainId))
   }
 
   public equals(other: NativeCurrency | Token): boolean {

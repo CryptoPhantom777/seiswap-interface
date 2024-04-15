@@ -16,7 +16,7 @@ import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { AddRemoveTabs } from '../../components/NavigationTabs'
 import { MinimalPositionCard } from '../../components/PositionCard'
 import Row, { RowBetween, RowFixed } from '../../components/Row'
-import { WEVMOS } from 'constants/tokens'
+import { WOKB } from 'constants/tokens'
 
 import Slider from '../../components/Slider'
 import CurrencyLogo from '../../components/CurrencyLogo'
@@ -335,8 +335,8 @@ export default function RemoveLiquidity({
   const oneCurrencyIsETH = currencyA?.isNative || currencyB?.isNative
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(WEVMOS[chainId], currencyA)) ||
-        (currencyB && currencyEquals(WEVMOS[chainId], currencyB)))
+      ((currencyA && currencyEquals(WOKB[chainId], currencyA)) ||
+        (currencyB && currencyEquals(WOKB[chainId], currencyB)))
   )
 
   const handleSelectCurrencyA = useCallback(
@@ -475,19 +475,19 @@ export default function RemoveLiquidity({
                       <RowBetween style={{ justifyContent: 'flex-end' }}>
                         {oneCurrencyIsETH ? (
                           <StyledInternalLink
-                            to={`/remove/v2/${currencyA?.isNative ? WEVMOS[chainId].address : currencyIdA}/${
-                              currencyB?.isNative ? WEVMOS[chainId].address : currencyIdB
+                            to={`/remove/v2/${currencyA?.isNative ? WOKB[chainId].address : currencyIdA}/${
+                              currencyB?.isNative ? WOKB[chainId].address : currencyIdB
                             }`}
                           >
-                            Receive WEVMOS
+                            Receive WOKB
                           </StyledInternalLink>
                         ) : oneCurrencyIsWETH ? (
                           <StyledInternalLink
                             to={`/remove/v2/${
-                              currencyA && currencyEquals(currencyA, WEVMOS[chainId]) ? 'EVMOS' : currencyIdA
-                            }/${currencyB && currencyEquals(currencyB, WEVMOS[chainId]) ? 'EVMOS' : currencyIdB}`}
+                              currencyA && currencyEquals(currencyA, WOKB[chainId]) ? 'OKB' : currencyIdA
+                            }/${currencyB && currencyEquals(currencyB, WOKB[chainId]) ? 'OKB' : currencyIdB}`}
                           >
-                            Receive EVMOS
+                            Receive OKB
                           </StyledInternalLink>
                         ) : null}
                       </RowBetween>

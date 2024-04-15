@@ -5,11 +5,11 @@ export function NomadWarningBanner({ style }: { style?: any }) {
   return (
     <InfoCard
       style={style}
-      title="Nomad Assets on Evmos"
+      title="Nomad Assets on Okb"
       description={
         <ol>
           <li>
-            The Nomad Bridge contract on Ethereum mainnet was exploited. We are working with the Nomad and Evmos teams
+            The Nomad Bridge contract on Ethereum mainnet was exploited. We are working with the Nomad and Okb teams
             and will keep you updated.
           </li>
           <li>

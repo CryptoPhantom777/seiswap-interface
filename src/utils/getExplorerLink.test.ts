@@ -19,7 +19,7 @@ describe('#getExplorerLink', () => {
   })
   it('testnet', () => {
     expect(getExplorerLink(ChainId.TESTNET, 'abc', ExplorerDataType.ADDRESS)).toEqual(
-      'https://evm.evmos.dev/address/abc'
+      'https://evm.okb.dev/address/abc'
     )
   })
 })

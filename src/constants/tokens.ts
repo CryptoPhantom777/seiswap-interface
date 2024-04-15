@@ -1,13 +1,13 @@
 import { Token } from '@uniswap/sdk-core'
 
-import { WEVMOS, Evmos } from './native-token'
+import { WOKB, Okb } from './native-token'
 
 import { ChainId } from 'constants/chains'
 import { MAINNET, TESTNET } from './periphery'
 
-export { WEVMOS, Evmos }
+export { WOKB, Okb }
 
-export const EVMOS = Evmos.onChain(ChainId.MAINNET)
+export const OKB = Okb.onChain(ChainId.MAINNET)
 
 /**
  * Grav Tokens (from tokenlist)
@@ -151,13 +151,13 @@ export const ATOM = {
   [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, '0xC97D061637D6b3a3E54AC76537B2635B112ecdad', 18, 'MATOM', 'Mock ATOM'),
 }
 
-export const MEVMOS = makeToken('EVMOS', 'MEVMOS', 18, {
+export const MOKB = makeToken('OKB', 'MOKB', 18, {
   /**
    * THis is just some mock token
    * Dont use for main net
    */
   [ChainId.MAINNET]: '0x0000000000000000000000000000000000000000',
-  [ChainId.TESTNET]: TESTNET.mockEVMOS,
+  [ChainId.TESTNET]: TESTNET.mockOKB,
   [ChainId.RINKEBY]: '0xDfbBc5573024984ddac30BbE632fa3DAA821aBaD',
 } as any)
 

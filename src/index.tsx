@@ -32,18 +32,18 @@ if (!!window.ethereum) {
   //     method: 'wallet_addEthereumChain',
   //     params: [
   //       {
-  //         chainId: '0x2329',
-  //         chainName: 'EVMOS',
+  //         chainId: '0xc4',
+  //         chainName: 'OKB',
   //         nativeCurrency: {
-  //           name: 'EVMOS',
-  //           symbol: 'EVMOS',
+  //           name: 'OKB',
+  //           symbol: 'OKB',
   //           decimals: 18,
   //         },
   //         rpcUrls: [
-  //           // 'https://evmos-rpc2.binary.host'
-  //           'https://eth.bd.evmos.org:8545',
+  //           // 'https://okb-rpc2.binary.host'
+  //           'https://rpc.xlayer.tech',
   //         ],
-  //         blockExplorerUrls: ['https://evm.evmos.org'],
+  //         blockExplorerUrls: ['https://evm.okb.org'],
   //       },
   //     ],
   //   })

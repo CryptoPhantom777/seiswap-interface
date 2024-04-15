@@ -34,7 +34,7 @@ export function useSwapActionHandlers(): {
       dispatch(
         selectCurrency({
           field,
-          currencyId: currency.isToken ? currency.address : currency.isNative ? 'EVMOS' : '',
+          currencyId: currency.isToken ? currency.address : currency.isNative ? 'OKB' : '',
         })
       )
     },
@@ -213,7 +213,7 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
   if (typeof urlParam === 'string') {
     const valid = isAddress(urlParam)
     if (valid) return valid
-    if (urlParam.toUpperCase() === 'EVMOS') return 'EVMOS'
+    if (urlParam.toUpperCase() === 'OKB') return 'OKB'
   }
   return ''
 }
@@ -242,7 +242,7 @@ export function queryParametersToSwapState(parsedQs: ParsedQs): SwapState {
   let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
   if (inputCurrency === '' && outputCurrency === '') {
     // default to ETH input
-    inputCurrency = 'EVMOS'
+    inputCurrency = 'OKB'
   } else if (inputCurrency === outputCurrency) {
     // clear output if identical
     outputCurrency = ''

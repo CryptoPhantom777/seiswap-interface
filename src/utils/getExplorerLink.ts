@@ -1,8 +1,8 @@
 import { ChainId } from 'constants/chains'
 
 const EXPLORER_PREFIXES: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]: 'escan.live',
-  [ChainId.TESTNET]: 'evm.evmos.dev',
+  [ChainId.MAINNET]: 'www.okx.com/explorer/xlayer',
+  [ChainId.TESTNET]: 'www.okx.com/explorer/xlayer-test',
   [ChainId.RINKEBY]: 'rinkeby.etherscan.io',
 }
 

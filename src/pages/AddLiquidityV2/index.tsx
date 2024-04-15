@@ -42,7 +42,7 @@ import { ConfirmAddModalBottom } from './ConfirmAddModalBottom'
 import { currencyId } from '../../utils/currencyId'
 import { PoolPriceBar } from './PoolPriceBar'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
-import { WEVMOS } from 'constants/tokens'
+import { WOKB } from 'constants/tokens'
 
 const DEFAULT_ADD_V2_SLIPPAGE_TOLERANCE = new Percent(50, 10_000)
 
@@ -60,8 +60,8 @@ export default function AddLiquidity({
 
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(currencyA, WEVMOS[chainId])) ||
-        (currencyB && currencyEquals(currencyB, WEVMOS[chainId])))
+      ((currencyA && currencyEquals(currencyA, WOKB[chainId])) ||
+        (currencyB && currencyEquals(currencyB, WOKB[chainId])))
   )
 
   const toggleWalletModal = useWalletModalToggle() // toggle wallet when disconnected
@@ -297,7 +297,7 @@ export default function AddLiquidity({
           history.push(`/add/v2/${newCurrencyIdB}`)
         }
       } else {
-        history.push(`/add/v2/${currencyIdA ? currencyIdA : 'EVMOS'}/${newCurrencyIdB}`)
+        history.push(`/add/v2/${currencyIdA ? currencyIdA : 'OKB'}/${newCurrencyIdB}`)
       }
     },
     [currencyIdA, history, currencyIdB]
