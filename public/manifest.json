@@ -1,7 +1,7 @@
 {
   "background_color": "#fff",
   "display": "standalone",
-  "homepage_url": "https://app.diffusion.fi",
+  "homepage_url": "https://xlayerswap.com",
   "icons": [
     {
       "src": "./images/192x192_App_Icon.png",
@@ -17,8 +17,8 @@
     }
   ],
   "orientation": "portrait",
-  "name": "Diffusion",
-  "short_name": "Diffusion",
+  "name": "XLayerSwap",
+  "short_name": "XLayerSwap",
   "start_url": ".",
   "theme_color": "#ff007a"
 }
