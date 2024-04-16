@@ -25,7 +25,7 @@ import Web3Status from '../Web3Status'
 // import UniBalanceContent from './UniBalanceContent'
 import { ChainId } from 'constants/chains'
 import DiffusionLogo from '../../assets/svg/logo.svg'
-// import { ExternalLink } from 'theme/components'
+import { ExternalLink } from 'theme/components'
 
 const Logo = styled.img`
   height: 16px;
@@ -216,37 +216,37 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-// const StyledExternalLink = styled(ExternalLink).attrs({
-//   activeClassName,
-// })<{ isActive?: boolean }>`
-//   ${({ theme }) => theme.flexRowNoWrap}
-//   align-items: left;
-//   border-radius: 3rem;
-//   outline: none;
-//   cursor: pointer;
-//   text-decoration: none;
-//   color: ${({ theme }) => theme.text3};
-//   font-size: 1rem;
-//   width: fit-content;
-//   margin: 0 12px;
-//   font-weight: 500;
+const StyledExternalLink = styled(ExternalLink).attrs({
+  activeClassName,
+})<{ isActive?: boolean }>`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: left;
+  border-radius: 3rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text3};
+  font-size: 1rem;
+  width: fit-content;
+  margin: 0 12px;
+  font-weight: 500;
 
-//   &.${activeClassName} {
-//     border-radius: 0px;
-//     font-weight: 800;
-//     color: ${({ theme }) => theme.text1};
-//   }
+  &.${activeClassName} {
+    border-radius: 0px;
+    font-weight: 800;
+    color: ${({ theme }) => theme.text1};
+  }
 
-//   :hover,
-//   :focus {
-//     text-decoration: none;
-//     color: ${({ theme }) => darken(0.1, theme.text1)};
-//   }
+  :hover,
+  :focus {
+    text-decoration: none;
+    color: ${({ theme }) => darken(0.1, theme.text1)};
+  }
 
-//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-//       display: none;
-// `}
-// `
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      display: none;
+`}
+`
 
 export const StyledMenuButton = styled.button`
   position: relative;
@@ -323,11 +323,23 @@ export default function Header() {
                     >
                         {t('pool')}
                     </StyledNavLink>
+                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.xlayerswap.com/">
+                        {'Docs'}
+                        <sup>↗</sup>
+                    </StyledExternalLink>
+                    <StyledExternalLink id={`charts-nav-link`} href="https://t.me/XLayerSwap">
+                        {'Telegram'}
+                        <sup>↗</sup>
+                    </StyledExternalLink>
+                    <StyledExternalLink id={`charts-nav-link`} href="https://twitter.com/XLayerSwap">
+                        {'X'}
+                        <sup>↗</sup>
+                    </StyledExternalLink>
                     {/*<BridgeMenu />*/}
                     {/* <StyledExternalLink id={`charts-nav-link`} href="https://info.diffusion.fi">
-            {t('Charts')}
-            <sup>↗</sup>
-          </StyledExternalLink> */}
+                        {t('Charts')}
+                        <sup>↗</sup>
+                    </StyledExternalLink> */}
                 </HeaderLinks>
             </HideSmall>
             <HeaderControls>
