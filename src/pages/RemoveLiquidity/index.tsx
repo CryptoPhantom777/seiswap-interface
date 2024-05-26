@@ -16,7 +16,7 @@ import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { AddRemoveTabs } from '../../components/NavigationTabs'
 import { MinimalPositionCard } from '../../components/PositionCard'
 import Row, { RowBetween, RowFixed } from '../../components/Row'
-import { WOKB } from 'constants/tokens'
+import { WETH } from 'constants/tokens'
 
 import Slider from '../../components/Slider'
 import CurrencyLogo from '../../components/CurrencyLogo'
@@ -335,8 +335,8 @@ export default function RemoveLiquidity({
   const oneCurrencyIsETH = currencyA?.isNative || currencyB?.isNative
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(WOKB[chainId], currencyA)) ||
-        (currencyB && currencyEquals(WOKB[chainId], currencyB)))
+      ((currencyA && currencyEquals(WETH[chainId], currencyA)) ||
+        (currencyB && currencyEquals(WETH[chainId], currencyB)))
   )
 
   const handleSelectCurrencyA = useCallback(
@@ -475,19 +475,19 @@ export default function RemoveLiquidity({
                       <RowBetween style={{ justifyContent: 'flex-end' }}>
                         {oneCurrencyIsETH ? (
                           <StyledInternalLink
-                            to={`/remove/v2/${currencyA?.isNative ? WOKB[chainId].address : currencyIdA}/${
-                              currencyB?.isNative ? WOKB[chainId].address : currencyIdB
+                            to={`/remove/v2/${currencyA?.isNative ? WETH[chainId].address : currencyIdA}/${
+                              currencyB?.isNative ? WETH[chainId].address : currencyIdB
                             }`}
                           >
-                            Receive WOKB
+                            Receive WETH
                           </StyledInternalLink>
                         ) : oneCurrencyIsWETH ? (
                           <StyledInternalLink
                             to={`/remove/v2/${
-                              currencyA && currencyEquals(currencyA, WOKB[chainId]) ? 'OKB' : currencyIdA
-                            }/${currencyB && currencyEquals(currencyB, WOKB[chainId]) ? 'OKB' : currencyIdB}`}
+                              currencyA && currencyEquals(currencyA, WETH[chainId]) ? 'ETH' : currencyIdA
+                            }/${currencyB && currencyEquals(currencyB, WETH[chainId]) ? 'ETH' : currencyIdB}`}
                           >
-                            Receive OKB
+                            Receive ETH
                           </StyledInternalLink>
                         ) : null}
                       </RowBetween>

@@ -278,8 +278,8 @@ export const StyledMenuButton = styled.button`
 `
 
 const NETWORK_LABELS: Record<ChainId, string> = {
-    [ChainId.TESTNET]: 'Okb Testnet',
-    [ChainId.MAINNET]: 'Okb',
+    [ChainId.TESTNET]: 'Eth Testnet',
+    [ChainId.MAINNET]: 'Eth',
     [ChainId.RINKEBY]: 'Rinkeby',
 }
 
@@ -323,15 +323,15 @@ export default function Header() {
                     >
                         {t('pool')}
                     </StyledNavLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.xlayerswap.com/">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.taikoswap.net">
                         {'Docs'}
                         <sup>↗</sup>
                     </StyledExternalLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://t.me/XLayerSwap">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://t.me/Taiko_Swap">
                         {'Telegram'}
                         <sup>↗</sup>
                     </StyledExternalLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://twitter.com/XLayerSwap">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://x.com/TaikoSwap_">
                         {'X'}
                         <sup>↗</sup>
                     </StyledExternalLink>
@@ -347,7 +347,7 @@ export default function Header() {
                     <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
                         {account && userEthBalance ? (
                             <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                                {userEthBalance?.toSignificant(4)} <span style={{ color: '#27D2EA' }}>OKB</span>
+                                {userEthBalance?.toSignificant(4)} <span style={{ color: '#27D2EA' }}>ETH</span>
                             </BalanceText>
                         ) : null}
                         <Web3Status />

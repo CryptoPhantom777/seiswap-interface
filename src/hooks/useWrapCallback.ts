@@ -5,7 +5,7 @@ import { useTransactionAdder } from '../state/transactions/hooks'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useActiveWeb3React } from './web3'
 import { useWETHContract } from './useContract'
-import { WOKB } from 'constants/tokens'
+import { WETH } from 'constants/tokens'
 
 export enum WrapType {
   NOT_APPLICABLE,
@@ -38,7 +38,7 @@ export default function useWrapCallback(
     const hasInputAmount = Boolean(inputAmount?.greaterThan('0'))
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
 
-    if (inputCurrency.isNative && currencyEquals(WOKB[chainId], outputCurrency)) {
+    if (inputCurrency.isNative && currencyEquals(WETH[chainId], outputCurrency)) {
       return {
         wrapType: WrapType.WRAP,
         execute:
@@ -46,7 +46,7 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.deposit({ value: `0x${inputAmount.quotient.toString(16)}` })
-                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} OKB to WOKB` })
+                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} ETH to WETH` })
                 } catch (error) {
                   console.error('Could not deposit', error)
                 }
@@ -55,10 +55,10 @@ export default function useWrapCallback(
         inputError: sufficientBalance
           ? undefined
           : hasInputAmount
-          ? 'Insufficient OKB balance'
-          : 'Enter OKB amount',
+          ? 'Insufficient ETH balance'
+          : 'Enter ETH amount',
       }
-    } else if (currencyEquals(WOKB[chainId], inputCurrency) && outputCurrency.isNative) {
+    } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency.isNative) {
       return {
         wrapType: WrapType.UNWRAP,
         execute:
@@ -66,7 +66,7 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.withdraw(`0x${inputAmount.quotient.toString(16)}`)
-                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WOKB to OKB` })
+                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WETH to ETH` })
                 } catch (error) {
                   console.error('Could not withdraw', error)
                 }
@@ -75,8 +75,8 @@ export default function useWrapCallback(
         inputError: sufficientBalance
           ? undefined
           : hasInputAmount
-          ? 'Insufficient WOKB balance'
-          : 'Enter WOKB amount',
+          ? 'Insufficient WETH balance'
+          : 'Enter WETH amount',
       }
     } else {
       return NOT_APPLICABLE

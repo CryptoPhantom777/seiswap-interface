@@ -7,7 +7,7 @@ export enum ChainId {
 export const NETWORK_URLS: {
   [chainId in ChainId]: string
 } = {
-  // [ChainId.MAINNET]: `https://okb-rpc2.binary.host`,
+  // [ChainId.MAINNET]: `https://eth-rpc2.binary.host`,
   [ChainId.MAINNET]: `https:rpc.taiko.xyz`,
   [ChainId.TESTNET]: `https://testrpc.xlayer.tech`,
   // From Metamask

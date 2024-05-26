@@ -1,13 +1,13 @@
 import { Token } from '@uniswap/sdk-core'
 
-import { WOKB, Okb } from './native-token'
+import { WETH, Eth } from './native-token'
 
 import { ChainId } from 'constants/chains'
 import { MAINNET, TESTNET } from './periphery'
 
-export { WOKB, Okb }
+export { WETH, Eth }
 
-export const OKB = Okb.onChain(ChainId.MAINNET)
+export const ETH = Eth.onChain(ChainId.MAINNET)
 
 /**
  * Grav Tokens (from tokenlist)
@@ -151,13 +151,13 @@ export const ATOM = {
   [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, '0xC97D061637D6b3a3E54AC76537B2635B112ecdad', 18, 'MATOM', 'Mock ATOM'),
 }
 
-export const MOKB = makeToken('OKB', 'MOKB', 18, {
+export const METH = makeToken('ETH', 'METH', 18, {
   /**
    * THis is just some mock token
    * Dont use for main net
    */
   [ChainId.MAINNET]: '0x0000000000000000000000000000000000000000',
-  [ChainId.TESTNET]: TESTNET.mockOKB,
+  [ChainId.TESTNET]: TESTNET.mockETH,
   [ChainId.RINKEBY]: '0xDfbBc5573024984ddac30BbE632fa3DAA821aBaD',
 } as any)
 

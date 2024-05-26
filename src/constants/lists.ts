@@ -1,7 +1,7 @@
 // used to mark unsupported tokens, these are hosted lists of unsupported tokens
 
-const DIFFUSION_LIST = 'https://raw.githubusercontent.com/XLayerSwap/tokenlist/main/src/tokenlist.json'
-const DIFFUSION_COMMUNITY_LIST = 'https://raw.githubusercontent.com/XLayerSwap/tokenlist/main/src/community-list.json'
+const DIFFUSION_LIST = 'https://raw.githubusercontent.com/cryptophantom777/taikoswap-tokenlist/main/src/tokenlist.json'
+const DIFFUSION_COMMUNITY_LIST = 'https://raw.githubusercontent.com/cryptophantom777/taikoswap-tokenlist/main/src/community-list.json'
 // const COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json'
 // const UMA_LIST = 'https://umaproject.org/uma.tokenlist.json'
 // const AAVE_LIST = 'tokenlist.aave.eth'

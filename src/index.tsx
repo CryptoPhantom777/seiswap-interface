@@ -33,17 +33,17 @@ if (!!window.ethereum) {
   //     params: [
   //       {
   //         chainId: '0x28c58',
-  //         chainName: 'OKB',
+  //         chainName: 'ETH',
   //         nativeCurrency: {
-  //           name: 'OKB',
-  //           symbol: 'OKB',
+  //           name: 'ETH',
+  //           symbol: 'ETH',
   //           decimals: 18,
   //         },
   //         rpcUrls: [
-  //           // 'https://okb-rpc2.binary.host'
+  //           // 'https://eth-rpc2.binary.host'
   //           'https:rpc.taiko.xyz',
   //         ],
-  //         blockExplorerUrls: ['https://evm.okb.org'],
+  //         blockExplorerUrls: ['https://evm.eth.org'],
   //       },
   //     ],
   //   })

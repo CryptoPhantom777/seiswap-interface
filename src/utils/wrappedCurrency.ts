@@ -1,6 +1,6 @@
 import { Currency, Token, CurrencyAmount } from '@uniswap/sdk-core'
 import { ChainId } from 'constants/chains'
-import { WOKB, OKB } from 'constants/tokens'
+import { WETH, ETH } from 'constants/tokens'
 import { supportedChainId } from './supportedChainId'
 import invariant from 'tiny-invariant'
 
@@ -18,7 +18,7 @@ export function wrappedCurrencyAmount(
 export function unwrappedToken(token: Token): Currency {
   if (token.isNative) return token
   const formattedChainId = supportedChainId(token.chainId)
-  if (formattedChainId && token.equals(WOKB[formattedChainId])) return OKB
+  if (formattedChainId && token.equals(WETH[formattedChainId])) return ETH
   return token
 }
 
@@ -30,7 +30,7 @@ function wrappedCurrencyInternal(currency: Currency, chainId: ChainId): Token {
     invariant(currency.chainId === chainId, 'CHAIN_ID')
     return currency
   }
-  if (currency.isNative) return WOKB[chainId]
+  if (currency.isNative) return WETH[chainId]
   throw new Error('CURRENCY')
 }
 

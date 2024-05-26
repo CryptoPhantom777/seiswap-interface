@@ -206,7 +206,7 @@ export default function WalletModal({
                           decimals: 18,
                         },
                         rpcUrls: [
-                          // 'https://okb-rpc2.binary.host'
+                          // 'https://eth-rpc2.binary.host'
                           'https://rpc.taiko.xyz',
                         ],
                         blockExplorerUrls: ['https://taikoscan.network'],
