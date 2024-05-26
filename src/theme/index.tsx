@@ -218,8 +218,13 @@ export const ThemedBackground = styled.div<{ backgroundColor?: string | undefine
   /* width: 200vw; */
   height: 200vh;
   mix-blend-mode: color;
-  background: black;
-  opacity: 0.6;
+  /* background: ${({ backgroundColor }) =>
+    `radial-gradient(50% 50% at 50% 50%, ${
+      backgroundColor ? backgroundColor : '#fc077d10'
+    } 0%, rgba(255, 255, 255, 0) 100%)`}; */
+  background: transparent radial-gradient(closest-side at 50% 50%, #e81899 0%, #20212400 100%) 0% 0% no-repeat
+    padding-box;
+  opacity: 0.3;
   transform: translateY(-100vh);
   will-change: background;
   transition: background 450ms ease;
