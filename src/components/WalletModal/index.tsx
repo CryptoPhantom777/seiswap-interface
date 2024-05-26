@@ -189,7 +189,7 @@ export default function WalletModal({
             try {
               await provider.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0xc4' }],
+                params: [{ chainId: '0x28c58' }],
               })
             } catch (switchError: any) {
               if (switchError.code === 4902) {
@@ -198,18 +198,18 @@ export default function WalletModal({
                     method: 'wallet_addEthereumChain',
                     params: [
                       {
-                        chainId: '0xc4',
-                        chainName: 'OKB',
+                        chainId: '0x28c58',
+                        chainName: 'Taiko',
                         nativeCurrency: {
-                          name: 'OKB',
-                          symbol: 'OKB',
+                          name: 'Ether',
+                          symbol: 'ETH',
                           decimals: 18,
                         },
                         rpcUrls: [
                           // 'https://okb-rpc2.binary.host'
-                          'https://rpc.xlayer.tech',
+                          'https://rpc.taiko.xyz',
                         ],
-                        blockExplorerUrls: ['https://evm.okb.org'],
+                        blockExplorerUrls: ['https://taikoscan.network'],
                       },
                     ],
                   })

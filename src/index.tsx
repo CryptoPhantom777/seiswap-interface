@@ -32,7 +32,7 @@ if (!!window.ethereum) {
   //     method: 'wallet_addEthereumChain',
   //     params: [
   //       {
-  //         chainId: '0xc4',
+  //         chainId: '0x28c58',
   //         chainName: 'OKB',
   //         nativeCurrency: {
   //           name: 'OKB',
@@ -41,7 +41,7 @@ if (!!window.ethereum) {
   //         },
   //         rpcUrls: [
   //           // 'https://okb-rpc2.binary.host'
-  //           'https://rpc.xlayer.tech',
+  //           'https:rpc.taiko.xyz',
   //         ],
   //         blockExplorerUrls: ['https://evm.okb.org'],
   //       },

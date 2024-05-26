@@ -44,7 +44,7 @@ export const walletconnect = new WalletConnectConnector({
   supportedChainIds: SUPPORTED_CHAIN_IDS,
   rpc: {
     195: 'https://testrpc.xlayer.tech',
-    196: 'https://rpc.xlayer.tech',
+    167000: 'https:rpc.taiko.xyz',
   },
   // bridge: WALLETCONNECT_BRIDGE_URL,
   qrcode: true,
@@ -66,6 +66,6 @@ export const portis = new PortisConnector({
 // // mainnet only
 export const walletlink = new WalletLinkConnector({
   url: NETWORK_URLS[ChainId.MAINNET],
-  appName: 'XLayerSwap',
+  appName: 'TaikoSwap',
   appLogoUrl: DIFFUSION_LOGO_URL,
 })
