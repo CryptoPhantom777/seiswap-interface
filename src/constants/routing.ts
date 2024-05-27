@@ -1,6 +1,7 @@
 // a list of tokens by chain
 import { Token } from '@uniswap/sdk-core'
 import {
+    DIFFUSION,
   USDC,
   WETH,
 } from './tokens'
@@ -31,13 +32,13 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: Partial<ChainTokenList> = {
   // [ChainId.MAINNET]: pickNetwork([ATOM, METH, OSMOSIS, USDC, WETH], ChainId.MAINNET),
-  [ChainId.MAINNET]: pickNetwork([WETH] as any, ChainId.MAINNET),
+  [ChainId.MAINNET]: pickNetwork([WETH, DIFFUSION] as any, ChainId.MAINNET),
   [ChainId.TESTNET]: pickNetwork([USDC, WETH], ChainId.TESTNET),
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-  [ChainId.MAINNET]: pickNetwork([USDC, WETH] as any, ChainId.MAINNET),
+  [ChainId.MAINNET]: pickNetwork([USDC, WETH, DIFFUSION] as any, ChainId.MAINNET),
   [ChainId.TESTNET]: pickNetwork([USDC, WETH], ChainId.TESTNET),
   [ChainId.RINKEBY]: pickNetwork([USDC, WETH], ChainId.RINKEBY),
 }

@@ -36,7 +36,7 @@ const MAINNET_PERIPHERY = {
   multicall2: '0xbfe0dfe0241dc488b41693cfd0a3d68372d11b1e',
   //
   minichef: '0x067eC87844fBD73eDa4a1059F30039584586e09d',
-  diffusion: '0x3f75ceabCDfed1aCa03257Dc6Bdc0408E2b4b026',
+  diffusion: '0xED197058A19E3A7C0D1aC402AaADEf22a0f31D0b',
 }
 
 export const MAINNET = {
