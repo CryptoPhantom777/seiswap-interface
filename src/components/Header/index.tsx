@@ -323,7 +323,7 @@ export default function Header() {
                     >
                         {t('pool')}
                     </StyledNavLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.taikoswap.net">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.tkoswap.xyz">
                         {'Docs'}
                         <sup>↗</sup>
                     </StyledExternalLink>
