@@ -28,7 +28,7 @@ import DiffusionLogo from '../../assets/svg/logo.svg'
 import { ExternalLink } from 'theme/components'
 
 const Logo = styled.img`
-  height: 16px;
+  height: 40px;
 `
 
 const HeaderFrame = styled.div<{ showBackground: boolean }>`
