@@ -1,6 +1,6 @@
 import { Currency, Token, CurrencyAmount } from '@uniswap/sdk-core'
 import { ChainId } from 'constants/chains'
-import { WETH, ETH } from 'constants/tokens'
+import { WSEI, SEI } from 'constants/tokens'
 import { supportedChainId } from './supportedChainId'
 import invariant from 'tiny-invariant'
 
@@ -18,7 +18,7 @@ export function wrappedCurrencyAmount(
 export function unwrappedToken(token: Token): Currency {
   if (token.isNative) return token
   const formattedChainId = supportedChainId(token.chainId)
-  if (formattedChainId && token.equals(WETH[formattedChainId])) return ETH
+  if (formattedChainId && token.equals(WSEI[formattedChainId])) return SEI
   return token
 }
 
@@ -30,7 +30,7 @@ function wrappedCurrencyInternal(currency: Currency, chainId: ChainId): Token {
     invariant(currency.chainId === chainId, 'CHAIN_ID')
     return currency
   }
-  if (currency.isNative) return WETH[chainId]
+  if (currency.isNative) return WSEI[chainId]
   throw new Error('CURRENCY')
 }
 

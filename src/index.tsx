@@ -33,10 +33,10 @@ if (!!window.ethereum) {
   //     params: [
   //       {
   //         chainId: '0x531',
-  //         chainName: 'ETH',
+  //         chainName: 'SEI',
   //         nativeCurrency: {
-  //           name: 'ETH',
-  //           symbol: 'ETH',
+  //           name: 'SEI',
+  //           symbol: 'SEI',
   //           decimals: 18,
   //         },
   //         rpcUrls: [

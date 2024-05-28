@@ -9,7 +9,7 @@ import styled from 'styled-components/macro'
 // import Logo from '../../assets/logo'
 
 import { useActiveWeb3React } from '../../hooks/web3'
-import { useETHBalances } from '../../state/wallet/hooks'
+import { useSEIBalances } from '../../state/wallet/hooks'
 import { BridgeMenu } from '../Menu/BridgeMenu'
 import { OnrampMenu } from '../Menu/OnrampMenu'
 import { MobileMenu } from '../Menu/MobileMenu'
@@ -288,7 +288,7 @@ export default function Header() {
     const { t } = useTranslation()
     // const [isBridgeOpen, setIsBridgeOpen] = useState(false)
 
-    const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
+    const userEthBalance = useSEIBalances(account ? [account] : [])?.[account ?? '']
     // const [isDark] = useDarkModeManager()
 
     // const [showUniBalanceModal, setShowUniBalanceModal] = useState(false)
@@ -347,7 +347,7 @@ export default function Header() {
                     <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
                         {account && userEthBalance ? (
                             <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                                {userEthBalance?.toSignificant(4)} <span style={{ color: '#27D2EA' }}>ETH</span>
+                                {userEthBalance?.toSignificant(4)} <span style={{ color: '#27D2EA' }}>SEI</span>
                             </BalanceText>
                         ) : null}
                         <Web3Status />

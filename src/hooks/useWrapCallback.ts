@@ -4,8 +4,8 @@ import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useActiveWeb3React } from './web3'
-import { useWETHContract } from './useContract'
-import { WETH } from 'constants/tokens'
+import { useWSEIContract } from './useContract'
+import { WSEI } from 'constants/tokens'
 
 export enum WrapType {
   NOT_APPLICABLE,
@@ -26,7 +26,7 @@ export default function useWrapCallback(
   typedValue: string | undefined
 ): { wrapType: WrapType; execute?: undefined | (() => Promise<void>); inputError?: string } {
   const { chainId, account } = useActiveWeb3React()
-  const wethContract = useWETHContract()
+  const wethContract = useWSEIContract()
   const balance = useCurrencyBalance(account ?? undefined, inputCurrency)
   // we can always parse the amount typed as the input currency, since wrapping is 1:1
   const inputAmount = useMemo(() => tryParseAmount(typedValue, inputCurrency), [inputCurrency, typedValue])
@@ -38,7 +38,7 @@ export default function useWrapCallback(
     const hasInputAmount = Boolean(inputAmount?.greaterThan('0'))
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
 
-    if (inputCurrency.isNative && currencyEquals(WETH[chainId], outputCurrency)) {
+    if (inputCurrency.isNative && currencyEquals(WSEI[chainId], outputCurrency)) {
       return {
         wrapType: WrapType.WRAP,
         execute:
@@ -46,7 +46,7 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.deposit({ value: `0x${inputAmount.quotient.toString(16)}` })
-                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} ETH to WETH` })
+                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} SEI to WSEI` })
                 } catch (error) {
                   console.error('Could not deposit', error)
                 }
@@ -55,10 +55,10 @@ export default function useWrapCallback(
         inputError: sufficientBalance
           ? undefined
           : hasInputAmount
-          ? 'Insufficient ETH balance'
-          : 'Enter ETH amount',
+          ? 'Insufficient SEI balance'
+          : 'Enter SEI amount',
       }
-    } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency.isNative) {
+    } else if (currencyEquals(WSEI[chainId], inputCurrency) && outputCurrency.isNative) {
       return {
         wrapType: WrapType.UNWRAP,
         execute:
@@ -66,7 +66,7 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.withdraw(`0x${inputAmount.quotient.toString(16)}`)
-                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WETH to ETH` })
+                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WSEI to SEI` })
                 } catch (error) {
                   console.error('Could not withdraw', error)
                 }
@@ -75,8 +75,8 @@ export default function useWrapCallback(
         inputError: sufficientBalance
           ? undefined
           : hasInputAmount
-          ? 'Insufficient WETH balance'
-          : 'Enter WETH amount',
+          ? 'Insufficient WSEI balance'
+          : 'Enter WSEI amount',
       }
     } else {
       return NOT_APPLICABLE

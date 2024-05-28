@@ -108,7 +108,7 @@ export function CurrencySearch({
 
   const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
 
-  const filteredSortedTokensWithETH: Currency[] = useMemo(() => {
+  const filteredSortedTokensWithSEI: Currency[] = useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim()
     if (['', 'p', 'ph', 'pho', 'phot', 'photo', 'photon', 'e', 'ev', 'evm', 'evmo', 'eth'].includes(s)) {
       return [Eth.onChain(chainId || ChainId.MAINNET), ...filteredSortedTokens]
@@ -144,17 +144,17 @@ export function CurrencySearch({
         const s = debouncedQuery.toLowerCase().trim()
         if (s === 'eth' && chainId) {
           handleCurrencySelect(Eth.onChain(chainId))
-        } else if (filteredSortedTokensWithETH.length > 0) {
+        } else if (filteredSortedTokensWithSEI.length > 0) {
           if (
-            filteredSortedTokensWithETH[0].symbol?.toLowerCase() === debouncedQuery.trim().toLowerCase() ||
-            filteredSortedTokensWithETH.length === 1
+            filteredSortedTokensWithSEI[0].symbol?.toLowerCase() === debouncedQuery.trim().toLowerCase() ||
+            filteredSortedTokensWithSEI.length === 1
           ) {
-            handleCurrencySelect(filteredSortedTokensWithETH[0])
+            handleCurrencySelect(filteredSortedTokensWithSEI[0])
           }
         }
       }
     },
-    [debouncedQuery, filteredSortedTokensWithETH, handleCurrencySelect, chainId]
+    [debouncedQuery, filteredSortedTokensWithSEI, handleCurrencySelect, chainId]
   )
 
   // menu ui
@@ -203,7 +203,7 @@ export function CurrencySearch({
             {({ height }) => (
               <CurrencyList
                 height={height}
-                currencies={filteredSortedTokensWithETH}
+                currencies={filteredSortedTokensWithSEI}
                 otherListTokens={filteredInactiveTokens}
                 onCurrencySelect={handleCurrencySelect}
                 otherCurrency={otherSelectedCurrency}

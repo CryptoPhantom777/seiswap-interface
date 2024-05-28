@@ -9,7 +9,7 @@ import { AutoColumn } from '../Column'
 import QuestionHelper from '../QuestionHelper'
 import { AutoRow } from '../Row'
 import CurrencyLogo from '../CurrencyLogo'
-import { Eth, ETH } from '../../constants/tokens'
+import { Eth, SEI } from '../../constants/tokens'
 import { CurrencyLogoFromList } from 'components/CurrencyLogo/CurrencyLogoFromList'
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
@@ -57,9 +57,9 @@ export default function CommonBases({
           }}
           disable={selectedCurrency?.isNative}
         >
-          <CurrencyLogo currency={ETH} style={{ marginRight: 8 }} />
+          <CurrencyLogo currency={SEI} style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            {ETH.symbol}
+            {SEI.symbol}
           </Text>
         </BaseWrapper>
         {(typeof chainId === 'number' ? SUGGESTED_BASES[chainId] ?? [] : []).map((token: Token) => {

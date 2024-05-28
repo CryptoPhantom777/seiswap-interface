@@ -3,11 +3,11 @@ import { Route } from './route'
 import { Trade } from './trade'
 import JSBI from 'jsbi'
 import { CurrencyAmount, Percent, Token, TradeType, Price } from '@uniswap/sdk-core'
-import { Eth, WETH9 } from 'constants/native-token'
+import { Eth, WSEI9 } from 'constants/native-token'
 
 describe('Trade', () => {
   const CHAIN_ID = 195
-  const ETHER = Eth.onChain(CHAIN_ID)
+  const SEIER = Eth.onChain(CHAIN_ID)
   const token0 = new Token(CHAIN_ID, '0x0000000000000000000000000000000000000001', 18, 't0')
   const token1 = new Token(CHAIN_ID, '0x0000000000000000000000000000000000000002', 18, 't1')
   const token2 = new Token(CHAIN_ID, '0x0000000000000000000000000000000000000003', 18, 't2')
@@ -35,7 +35,7 @@ describe('Trade', () => {
   )
 
   const pair_weth_0 = new Pair(
-    CurrencyAmount.fromRawAmount(WETH9[CHAIN_ID], JSBI.BigInt(1000)),
+    CurrencyAmount.fromRawAmount(WSEI9[CHAIN_ID], JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000))
   )
 
@@ -44,42 +44,42 @@ describe('Trade', () => {
     CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(0))
   )
 
-  it('can be constructed with ETHER as input', () => {
+  it('can be constructed with SEIER as input', () => {
     const trade = new Trade(
-      new Route([pair_weth_0], ETHER, token0),
+      new Route([pair_weth_0], SEIER, token0),
       CurrencyAmount.ether(CHAIN_ID, JSBI.BigInt(100)),
       TradeType.EXACT_INPUT
     )
-    expect(trade.inputAmount.currency).toEqual(ETHER)
+    expect(trade.inputAmount.currency).toEqual(SEIER)
     expect(trade.outputAmount.currency).toEqual(token0)
   })
-  it('can be constructed with ETHER as input for exact output', () => {
+  it('can be constructed with SEIER as input for exact output', () => {
     const trade = new Trade(
-      new Route([pair_weth_0], ETHER, token0),
+      new Route([pair_weth_0], SEIER, token0),
       CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100)),
       TradeType.EXACT_OUTPUT
     )
-    expect(trade.inputAmount.currency).toEqual(ETHER)
+    expect(trade.inputAmount.currency).toEqual(SEIER)
     expect(trade.outputAmount.currency).toEqual(token0)
   })
 
-  it('can be constructed with ETHER as output', () => {
+  it('can be constructed with SEIER as output', () => {
     const trade = new Trade(
-      new Route([pair_weth_0], token0, ETHER),
+      new Route([pair_weth_0], token0, SEIER),
       CurrencyAmount.ether(CHAIN_ID, JSBI.BigInt(100)),
       TradeType.EXACT_OUTPUT
     )
     expect(trade.inputAmount.currency).toEqual(token0)
-    expect(trade.outputAmount.currency).toEqual(ETHER)
+    expect(trade.outputAmount.currency).toEqual(SEIER)
   })
-  it('can be constructed with ETHER as output for exact input', () => {
+  it('can be constructed with SEIER as output for exact input', () => {
     const trade = new Trade(
-      new Route([pair_weth_0], token0, ETHER),
+      new Route([pair_weth_0], token0, SEIER),
       CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100)),
       TradeType.EXACT_INPUT
     )
     expect(trade.inputAmount.currency).toEqual(token0)
-    expect(trade.outputAmount.currency).toEqual(ETHER)
+    expect(trade.outputAmount.currency).toEqual(SEIER)
   })
 
   describe('#bestTradeExactIn', () => {
@@ -163,33 +163,33 @@ describe('Trade', () => {
       expect(result).toHaveLength(0)
     })
 
-    it('works for ETHER currency input', () => {
+    it('works for SEIER currency input', () => {
       const result = Trade.bestTradeExactIn(
         [pair_weth_0, pair_0_1, pair_0_3, pair_1_3],
         CurrencyAmount.ether(CHAIN_ID, JSBI.BigInt(100)),
         token3
       )
       expect(result).toHaveLength(2)
-      expect(result[0].inputAmount.currency).toEqual(ETHER)
-      expect(result[0].route.path).toEqual([WETH9[CHAIN_ID], token0, token1, token3])
+      expect(result[0].inputAmount.currency).toEqual(SEIER)
+      expect(result[0].route.path).toEqual([WSEI9[CHAIN_ID], token0, token1, token3])
       expect(result[0].outputAmount.currency).toEqual(token3)
-      expect(result[1].inputAmount.currency).toEqual(ETHER)
-      expect(result[1].route.path).toEqual([WETH9[CHAIN_ID], token0, token3])
+      expect(result[1].inputAmount.currency).toEqual(SEIER)
+      expect(result[1].route.path).toEqual([WSEI9[CHAIN_ID], token0, token3])
       expect(result[1].outputAmount.currency).toEqual(token3)
     })
-    it('works for ETHER currency output', () => {
+    it('works for SEIER currency output', () => {
       const result = Trade.bestTradeExactIn(
         [pair_weth_0, pair_0_1, pair_0_3, pair_1_3],
         CurrencyAmount.fromRawAmount(token3, JSBI.BigInt(100)),
-        ETHER
+        SEIER
       )
       expect(result).toHaveLength(2)
       expect(result[0].inputAmount.currency).toEqual(token3)
-      expect(result[0].route.path).toEqual([token3, token0, WETH9[CHAIN_ID]])
-      expect(result[0].outputAmount.currency).toEqual(ETHER)
+      expect(result[0].route.path).toEqual([token3, token0, WSEI9[CHAIN_ID]])
+      expect(result[0].outputAmount.currency).toEqual(SEIER)
       expect(result[1].inputAmount.currency).toEqual(token3)
-      expect(result[1].route.path).toEqual([token3, token1, token0, WETH9[CHAIN_ID]])
-      expect(result[1].outputAmount.currency).toEqual(ETHER)
+      expect(result[1].route.path).toEqual([token3, token1, token0, WSEI9[CHAIN_ID]])
+      expect(result[1].outputAmount.currency).toEqual(SEIER)
     })
   })
 
@@ -432,21 +432,21 @@ describe('Trade', () => {
       expect(result).toHaveLength(0)
     })
 
-    it('works for ETHER currency input', () => {
+    it('works for SEIER currency input', () => {
       const result = Trade.bestTradeExactOut(
         [pair_weth_0, pair_0_1, pair_0_3, pair_1_3],
-        ETHER,
+        SEIER,
         CurrencyAmount.fromRawAmount(token3, JSBI.BigInt(100))
       )
       expect(result).toHaveLength(2)
-      expect(result[0].inputAmount.currency).toEqual(ETHER)
-      expect(result[0].route.path).toEqual([WETH9[CHAIN_ID], token0, token1, token3])
+      expect(result[0].inputAmount.currency).toEqual(SEIER)
+      expect(result[0].route.path).toEqual([WSEI9[CHAIN_ID], token0, token1, token3])
       expect(result[0].outputAmount.currency).toEqual(token3)
-      expect(result[1].inputAmount.currency).toEqual(ETHER)
-      expect(result[1].route.path).toEqual([WETH9[CHAIN_ID], token0, token3])
+      expect(result[1].inputAmount.currency).toEqual(SEIER)
+      expect(result[1].route.path).toEqual([WSEI9[CHAIN_ID], token0, token3])
       expect(result[1].outputAmount.currency).toEqual(token3)
     })
-    it('works for ETHER currency output', () => {
+    it('works for SEIER currency output', () => {
       const result = Trade.bestTradeExactOut(
         [pair_weth_0, pair_0_1, pair_0_3, pair_1_3],
         token3,
@@ -454,11 +454,11 @@ describe('Trade', () => {
       )
       expect(result).toHaveLength(2)
       expect(result[0].inputAmount.currency).toEqual(token3)
-      expect(result[0].route.path).toEqual([token3, token0, WETH9[CHAIN_ID]])
-      expect(result[0].outputAmount.currency).toEqual(ETHER)
+      expect(result[0].route.path).toEqual([token3, token0, WSEI9[CHAIN_ID]])
+      expect(result[0].outputAmount.currency).toEqual(SEIER)
       expect(result[1].inputAmount.currency).toEqual(token3)
-      expect(result[1].route.path).toEqual([token3, token1, token0, WETH9[CHAIN_ID]])
-      expect(result[1].outputAmount.currency).toEqual(ETHER)
+      expect(result[1].route.path).toEqual([token3, token1, token0, WSEI9[CHAIN_ID]])
+      expect(result[1].outputAmount.currency).toEqual(SEIER)
     })
   })
 })

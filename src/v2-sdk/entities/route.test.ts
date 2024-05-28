@@ -1,12 +1,12 @@
 import { Token, CurrencyAmount } from '@uniswap/sdk-core'
 import { Pair, Route } from './index'
-import { Eth, WETH9 } from 'constants/native-token'
+import { Eth, WSEI9 } from 'constants/native-token'
 
 describe('Route', () => {
-  const ETHER = Eth.onChain(1)
+  const SEIER = Eth.onChain(1)
   const token0 = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0')
   const token1 = new Token(1, '0x0000000000000000000000000000000000000002', 18, 't1')
-  const weth = WETH9[1]
+  const weth = WSEI9[1]
   const pair_0_1 = new Pair(CurrencyAmount.fromRawAmount(token0, '100'), CurrencyAmount.fromRawAmount(token1, '200'))
   const pair_0_weth = new Pair(CurrencyAmount.fromRawAmount(token0, '100'), CurrencyAmount.fromRawAmount(weth, '100'))
   const pair_1_weth = new Pair(CurrencyAmount.fromRawAmount(token1, '175'), CurrencyAmount.fromRawAmount(weth, '100'))
@@ -28,16 +28,16 @@ describe('Route', () => {
   })
 
   it('supports ether input', () => {
-    const route = new Route([pair_0_weth], ETHER, token0)
+    const route = new Route([pair_0_weth], SEIER, token0)
     expect(route.pairs).toEqual([pair_0_weth])
-    expect(route.input).toEqual(ETHER)
+    expect(route.input).toEqual(SEIER)
     expect(route.output).toEqual(token0)
   })
 
   it('supports ether output', () => {
-    const route = new Route([pair_0_weth], token0, ETHER)
+    const route = new Route([pair_0_weth], token0, SEIER)
     expect(route.pairs).toEqual([pair_0_weth])
     expect(route.input).toEqual(token0)
-    expect(route.output).toEqual(ETHER)
+    expect(route.output).toEqual(SEIER)
   })
 })

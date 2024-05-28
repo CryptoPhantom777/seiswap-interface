@@ -42,7 +42,7 @@ export const DIFFUSION_BAR_ADDRESS = {
 }
 
 // Used but ultimately not ours
-export const WETH9_ADDRESS = {
+export const WSEI9_ADDRESS = {
   [ChainId.MAINNET]: MAINNET.weth9,
   [ChainId.TESTNET]: TESTNET.weth9,
   [ChainId.RINKEBY]: '0xc778417E063141139Fce010982780140Aa0cD5Ab',

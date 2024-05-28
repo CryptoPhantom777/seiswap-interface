@@ -1,6 +1,6 @@
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import JSBI from 'jsbi'
-import { MIN_ETH } from '../constants/misc'
+import { MIN_SEI } from '../constants/misc'
 
 /**
  * Given some token amount, return the max that can be spent of it
@@ -9,8 +9,8 @@ import { MIN_ETH } from '../constants/misc'
 export function maxAmountSpend(currencyAmount?: CurrencyAmount<Currency>): CurrencyAmount<Currency> | undefined {
   if (!currencyAmount) return undefined
   if (currencyAmount.currency.isNative) {
-    if (JSBI.greaterThan(currencyAmount.quotient, MIN_ETH)) {
-      return CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI.subtract(currencyAmount.quotient, MIN_ETH))
+    if (JSBI.greaterThan(currencyAmount.quotient, MIN_SEI)) {
+      return CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI.subtract(currencyAmount.quotient, MIN_SEI))
     } else {
       return CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI.BigInt(0))
     }

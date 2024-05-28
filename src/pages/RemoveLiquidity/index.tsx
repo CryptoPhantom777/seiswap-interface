@@ -16,7 +16,7 @@ import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { AddRemoveTabs } from '../../components/NavigationTabs'
 import { MinimalPositionCard } from '../../components/PositionCard'
 import Row, { RowBetween, RowFixed } from '../../components/Row'
-import { WETH } from 'constants/tokens'
+import { WSEI } from 'constants/tokens'
 
 import Slider from '../../components/Slider'
 import CurrencyLogo from '../../components/CurrencyLogo'
@@ -148,22 +148,22 @@ export default function RemoveLiquidity({
     const liquidityAmount = parsedAmounts[Field.LIQUIDITY]
     if (!liquidityAmount) throw new Error('missing liquidity amount')
 
-    const currencyBIsETH = currencyB.isNative
-    const oneCurrencyIsETH = currencyA.isNative || currencyBIsETH
+    const currencyBIsSEI = currencyB.isNative
+    const oneCurrencyIsSEI = currencyA.isNative || currencyBIsSEI
 
     if (!tokenA || !tokenB) throw new Error('could not wrap')
 
     let methodNames: string[], args: Array<string | string[] | number | boolean>
     // we have approval, use normal remove liquidity
     if (approval === ApprovalState.APPROVED) {
-      // removeLiquidityETH
-      if (oneCurrencyIsETH) {
-        methodNames = ['removeLiquidityETH', 'removeLiquidityETHSupportingFeeOnTransferTokens']
+      // removeLiquiditySEI
+      if (oneCurrencyIsSEI) {
+        methodNames = ['removeLiquiditySEI', 'removeLiquiditySEISupportingFeeOnTransferTokens']
         args = [
-          currencyBIsETH ? tokenA.address : tokenB.address,
+          currencyBIsSEI ? tokenA.address : tokenB.address,
           liquidityAmount.quotient.toString(),
-          amountsMin[currencyBIsETH ? Field.CURRENCY_A : Field.CURRENCY_B].toString(),
-          amountsMin[currencyBIsETH ? Field.CURRENCY_B : Field.CURRENCY_A].toString(),
+          amountsMin[currencyBIsSEI ? Field.CURRENCY_A : Field.CURRENCY_B].toString(),
+          amountsMin[currencyBIsSEI ? Field.CURRENCY_B : Field.CURRENCY_A].toString(),
           account,
           deadline.toHexString(),
         ]
@@ -332,11 +332,11 @@ export default function RemoveLiquidity({
     [onUserInput]
   )
 
-  const oneCurrencyIsETH = currencyA?.isNative || currencyB?.isNative
-  const oneCurrencyIsWETH = Boolean(
+  const oneCurrencyIsSEI = currencyA?.isNative || currencyB?.isNative
+  const oneCurrencyIsWSEI = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(WETH[chainId], currencyA)) ||
-        (currencyB && currencyEquals(WETH[chainId], currencyB)))
+      ((currencyA && currencyEquals(WSEI[chainId], currencyA)) ||
+        (currencyB && currencyEquals(WSEI[chainId], currencyB)))
   )
 
   const handleSelectCurrencyA = useCallback(
@@ -471,23 +471,23 @@ export default function RemoveLiquidity({
                         </Text>
                       </RowFixed>
                     </RowBetween>
-                    {chainId && (oneCurrencyIsWETH || oneCurrencyIsETH) ? (
+                    {chainId && (oneCurrencyIsWSEI || oneCurrencyIsSEI) ? (
                       <RowBetween style={{ justifyContent: 'flex-end' }}>
-                        {oneCurrencyIsETH ? (
+                        {oneCurrencyIsSEI ? (
                           <StyledInternalLink
-                            to={`/remove/v2/${currencyA?.isNative ? WETH[chainId].address : currencyIdA}/${
-                              currencyB?.isNative ? WETH[chainId].address : currencyIdB
+                            to={`/remove/v2/${currencyA?.isNative ? WSEI[chainId].address : currencyIdA}/${
+                              currencyB?.isNative ? WSEI[chainId].address : currencyIdB
                             }`}
                           >
-                            Receive WETH
+                            Receive WSEI
                           </StyledInternalLink>
-                        ) : oneCurrencyIsWETH ? (
+                        ) : oneCurrencyIsWSEI ? (
                           <StyledInternalLink
                             to={`/remove/v2/${
-                              currencyA && currencyEquals(currencyA, WETH[chainId]) ? 'ETH' : currencyIdA
-                            }/${currencyB && currencyEquals(currencyB, WETH[chainId]) ? 'ETH' : currencyIdB}`}
+                              currencyA && currencyEquals(currencyA, WSEI[chainId]) ? 'SEI' : currencyIdA
+                            }/${currencyB && currencyEquals(currencyB, WSEI[chainId]) ? 'SEI' : currencyIdB}`}
                           >
-                            Receive ETH
+                            Receive SEI
                           </StyledInternalLink>
                         ) : null}
                       </RowBetween>
@@ -597,7 +597,7 @@ export default function RemoveLiquidity({
 
       {pair ? (
         <AutoColumn style={{ minWidth: '20rem', width: '100%', maxWidth: '400px', marginTop: '1rem' }}>
-          <MinimalPositionCard showUnwrapped={oneCurrencyIsWETH} pair={pair} />
+          <MinimalPositionCard showUnwrapped={oneCurrencyIsWSEI} pair={pair} />
         </AutoColumn>
       ) : null}
     </>

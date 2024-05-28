@@ -3,7 +3,7 @@ import { Token } from '@uniswap/sdk-core'
 import {
     DIFFUSION,
   USDC,
-  WETH,
+  WSEI,
 } from './tokens'
 import { ChainId } from './chains'
 type ChainTokenList = {
@@ -14,12 +14,12 @@ type ChainTokenList = {
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.MAINNET]: pickNetwork(
     [
-      WETH,
+      WSEI,
     ] as any,
     ChainId.MAINNET
   ),
-  [ChainId.TESTNET]: pickNetwork([USDC, WETH], ChainId.TESTNET),
-  [ChainId.RINKEBY]: pickNetwork([USDC, WETH], ChainId.RINKEBY),
+  [ChainId.TESTNET]: pickNetwork([USDC, WSEI], ChainId.TESTNET),
+  [ChainId.RINKEBY]: pickNetwork([USDC, WSEI], ChainId.RINKEBY),
 }
 export const ADDITIONAL_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: Token[] } } = {}
 
@@ -31,16 +31,16 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: Partial<ChainTokenList> = {
-  // [ChainId.MAINNET]: pickNetwork([ATOM, METH, OSMOSIS, USDC, WETH], ChainId.MAINNET),
-  [ChainId.MAINNET]: pickNetwork([WETH, DIFFUSION] as any, ChainId.MAINNET),
-  [ChainId.TESTNET]: pickNetwork([USDC, WETH], ChainId.TESTNET),
+  // [ChainId.MAINNET]: pickNetwork([ATOM, MSEI, OSMOSIS, USDC, WSEI], ChainId.MAINNET),
+  [ChainId.MAINNET]: pickNetwork([WSEI, DIFFUSION] as any, ChainId.MAINNET),
+  [ChainId.TESTNET]: pickNetwork([USDC, WSEI], ChainId.TESTNET),
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-  [ChainId.MAINNET]: pickNetwork([USDC, WETH, DIFFUSION] as any, ChainId.MAINNET),
-  [ChainId.TESTNET]: pickNetwork([USDC, WETH], ChainId.TESTNET),
-  [ChainId.RINKEBY]: pickNetwork([USDC, WETH], ChainId.RINKEBY),
+  [ChainId.MAINNET]: pickNetwork([USDC, WSEI, DIFFUSION] as any, ChainId.MAINNET),
+  [ChainId.TESTNET]: pickNetwork([USDC, WSEI], ChainId.TESTNET),
+  [ChainId.RINKEBY]: pickNetwork([USDC, WSEI], ChainId.RINKEBY),
 }
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   //@TODO: Check where this is used

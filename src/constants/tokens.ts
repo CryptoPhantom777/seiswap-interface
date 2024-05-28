@@ -1,13 +1,13 @@
 import { Token } from '@uniswap/sdk-core'
 
-import { WETH, Eth } from './native-token'
+import { WSEI, Eth } from './native-token'
 
 import { ChainId } from 'constants/chains'
 import { MAINNET, TESTNET } from './periphery'
 
-export { WETH, Eth }
+export { WSEI, Eth }
 
-export const ETH = Eth.onChain(ChainId.MAINNET)
+export const SEI = Eth.onChain(ChainId.MAINNET)
 
 /**
  * Grav Tokens (from tokenlist)
@@ -23,12 +23,12 @@ export const GRAV = {
   ),
 }
 
-export const gWETH = {
+export const gWSEI = {
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0xc03345448969Dd8C00e9E4A85d2d9722d093aF8E',
     18,
-    'gWETH',
+    'gWSEI',
     'Wrapped Ether - Gravity'
   ),
 }
@@ -80,12 +80,12 @@ export const gUSDT = {
 /** ---------- NOMAD TOKENS
  * https://docs.nomad.xyz/bridge/domains.html#milkomeda-c1
  * ----------- */
-export const madWETH = {
+export const madWSEI = {
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0x5842C5532b61aCF3227679a8b1BD0242a41752f2',
     18,
-    'WETH',
+    'WSEI',
     'Wrapped Ether - Nomad'
   ),
 }
@@ -122,7 +122,7 @@ export const madUSDC = {
   [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, '0xB2E91f27a9766bFD925D66D88B78D2cE64a846b6', 18, 'MUSDC', 'Mock USDC'),
 }
 
-export const TETHER = {
+export const TSEIER = {
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0x7FF4a56B32ee13D7D4D405887E0eA37d61Ed919e',
@@ -151,13 +151,13 @@ export const ATOM = {
   [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, '0xC97D061637D6b3a3E54AC76537B2635B112ecdad', 18, 'MATOM', 'Mock ATOM'),
 }
 
-export const METH = makeToken('ETH', 'METH', 18, {
+export const MSEI = makeToken('SEI', 'MSEI', 18, {
   /**
    * THis is just some mock token
    * Dont use for main net
    */
   [ChainId.MAINNET]: '0x0000000000000000000000000000000000000000',
-  [ChainId.TESTNET]: TESTNET.mockETH,
+  [ChainId.TESTNET]: TESTNET.mockSEI,
   [ChainId.RINKEBY]: '0xDfbBc5573024984ddac30BbE632fa3DAA821aBaD',
 } as any)
 

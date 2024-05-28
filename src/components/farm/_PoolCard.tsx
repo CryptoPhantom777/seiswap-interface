@@ -86,32 +86,32 @@ export default function PoolCard({ stakingInfo }: PoolCardProps) {
 
   // get the color of the token
   const token = currency0.isNative ? token1 : token0
-  const WETH = currency0.isNative ? token0 : token1
+  const WSEI = currency0.isNative ? token0 : token1
   const backgroundColor = useColor(token)
 
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.currency)
   const [, stakingTokenPair] = useV2Pair(...stakingInfo.tokens)
 
   // let returnOverMonth: Percent = new Percent('0')
-  let valueOfTotalStakedAmountInWETH: CurrencyAmount<Token> | undefined
+  let valueOfTotalStakedAmountInWSEI: CurrencyAmount<Token> | undefined
   if (totalSupplyOfStakingToken && stakingTokenPair) {
-    // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
-    valueOfTotalStakedAmountInWETH = CurrencyAmount.fromRawAmount(
-      WETH,
+    // take the total amount of LP tokens staked, multiply by SEI value of all LP tokens, divide by all LP tokens
+    valueOfTotalStakedAmountInWSEI = CurrencyAmount.fromRawAmount(
+      WSEI,
       JSBI.divide(
         JSBI.multiply(
-          JSBI.multiply(stakingInfo.totalStakedAmount.quotient, stakingTokenPair.reserveOf(WETH).quotient),
-          JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
+          JSBI.multiply(stakingInfo.totalStakedAmount.quotient, stakingTokenPair.reserveOf(WSEI).quotient),
+          JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WSEI they entitle owner to
         ),
         totalSupplyOfStakingToken.quotient
       )
     )
   }
 
-  // get the USD value of staked WETH
-  const USDPrice = useUSDCPrice(WETH)
+  // get the USD value of staked WSEI
+  const USDPrice = useUSDCPrice(WSEI)
   const valueOfTotalStakedAmountInUSDC =
-    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
+    valueOfTotalStakedAmountInWSEI && USDPrice?.quote(valueOfTotalStakedAmountInWSEI)
 
   return (
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
@@ -137,7 +137,7 @@ export default function PoolCard({ stakingInfo }: PoolCardProps) {
           <TYPE.white>
             {valueOfTotalStakedAmountInUSDC
               ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-              : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+              : `${valueOfTotalStakedAmountInWSEI?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} SEI`}
           </TYPE.white>
         </RowBetween>
         <RowBetween>

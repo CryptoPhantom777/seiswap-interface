@@ -41,9 +41,9 @@ Basic.args = { data: dummyData }
 //   const TopLeftContent = () => (
 //     <AutoColumn gap="md">
 //       <RowFixed align="center">
-//         <DoubleCurrencyLogo currency0={MKR} currency1={ETHER} size={20} />{' '}
+//         <DoubleCurrencyLogo currency0={MKR} currency1={SEIER} size={20} />{' '}
 //         <TYPE.main fontSize="20px" color="white" ml="10px">
-//           ETH / MKR
+//           SEI / MKR
 //         </TYPE.main>
 //       </RowFixed>
 //       <Row>

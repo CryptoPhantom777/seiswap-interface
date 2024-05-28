@@ -1,7 +1,7 @@
 import { Token, Price, CurrencyAmount } from '@uniswap/sdk-core'
 import { InsufficientInputAmountError } from '../errors'
 import { computePairAddress, Pair } from './pair'
-import { WETH9 } from 'constants/native-token'
+import { WSEI9 } from 'constants/native-token'
 
 describe('computePairAddress', () => {
   it('should correctly compute the pool address', () => {
@@ -46,13 +46,13 @@ describe('Pair', () => {
   describe('constructor', () => {
     it('cannot be used for tokens on different chains', () => {
       expect(
-        () => new Pair(CurrencyAmount.fromRawAmount(USDC, '100'), CurrencyAmount.fromRawAmount(WETH9[195], '100'))
+        () => new Pair(CurrencyAmount.fromRawAmount(USDC, '100'), CurrencyAmount.fromRawAmount(WSEI9[195], '100'))
       ).toThrow('CHAIN_IDS')
     })
   })
 
   describe.skip('#getAddress', () => {
-    // This is not the same address anymore, since we changed the Factory contract to our ETH one
+    // This is not the same address anymore, since we changed the Factory contract to our SEI one
     it('returns the correct address', () => {
       expect(Pair.getAddress(USDC, DAI)).toEqual('0xAE461cA67B15dc8dc81CE7615e0320dA1A9aB8D5')
     })
@@ -129,7 +129,7 @@ describe('Pair', () => {
     })
 
     it('throws if invalid token', () => {
-      expect(() => pair.priceOf(WETH9[195])).toThrow('TOKEN')
+      expect(() => pair.priceOf(WSEI9[195])).toThrow('TOKEN')
     })
   })
 
@@ -146,7 +146,7 @@ describe('Pair', () => {
     it('throws if not in the pair', () => {
       expect(() =>
         new Pair(CurrencyAmount.fromRawAmount(DAI, '101'), CurrencyAmount.fromRawAmount(USDC, '100')).reserveOf(
-          WETH9[195]
+          WSEI9[195]
         )
       ).toThrow('TOKEN')
     })
@@ -171,7 +171,7 @@ describe('Pair', () => {
     ).toEqual(true)
     expect(
       new Pair(CurrencyAmount.fromRawAmount(USDC, '100'), CurrencyAmount.fromRawAmount(DAI, '100')).involvesToken(
-        WETH9[195]
+        WSEI9[195]
       )
     ).toEqual(false)
   })

@@ -18,7 +18,7 @@ import ERC20_BYTES32_ABI from 'abis/erc20_bytes32.json'
 import MULTICALL_ABI from 'abis/multicall2.json'
 import { Unisocks } from 'abis/types/Unisocks'
 import UNISOCKS_ABI from 'abis/unisocks.json'
-import WETH_ABI from 'abis/weth.json'
+import WSEI_ABI from 'abis/weth.json'
 import EIP_2612 from 'abis/eip_2612.json'
 import { abi as MINICHEF_V2_ABI } from 'abis/MiniChefV2.json'
 import { abi as COMPLEX_REWARDER_TIME_ABI } from 'abis/ComplexRewarderTime.json'
@@ -26,7 +26,7 @@ import { abi as AIRDROP_ABI } from 'abis/Airdrop.json'
 import { abi as DIFFUSION_BAR_ABI } from 'abis/DiffusionBar.json'
 
 import { ChainId } from 'constants/chains'
-import { WETH, DIFFUSION } from 'constants/tokens'
+import { WSEI, DIFFUSION } from 'constants/tokens'
 
 import {
   NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
@@ -98,9 +98,9 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
   return useContract<Erc20>(tokenAddress, ERC20_ABI, withSignerIfPossible)
 }
 
-export function useWETHContract(withSignerIfPossible?: boolean) {
+export function useWSEIContract(withSignerIfPossible?: boolean) {
   const { chainId } = useActiveWeb3React()
-  return useContract<Weth>(chainId ? WETH[chainId]?.address : undefined, WETH_ABI, withSignerIfPossible)
+  return useContract<Weth>(chainId ? WSEI[chainId]?.address : undefined, WSEI_ABI, withSignerIfPossible)
 }
 
 export function useArgentWalletDetectorContract() {
