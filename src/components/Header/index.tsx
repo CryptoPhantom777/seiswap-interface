@@ -323,18 +323,18 @@ export default function Header() {
                     >
                         {t('pool')}
                     </StyledNavLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.tkoswap.xyz">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://docs.seiswap.xyz">
                         {'Docs'}
                         <sup>↗</sup>
                     </StyledExternalLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://t.me/Taiko_Swap">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://t.me/Sei_Swap">
                         {'Telegram'}
                         <sup>↗</sup>
                     </StyledExternalLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://x.com/SeiSwap_">
+                    {/*<StyledExternalLink id={`charts-nav-link`} href="https://x.com/SeiSwap_">
                         {'X'}
                         <sup>↗</sup>
-                    </StyledExternalLink>
+                    </StyledExternalLink>*/}
                     {/*<BridgeMenu />*/}
                     {/* <StyledExternalLink id={`charts-nav-link`} href="https://info.diffusion.fi">
                         {t('Charts')}
