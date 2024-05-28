@@ -17,8 +17,8 @@
     }
   ],
   "orientation": "portrait",
-  "name": "TaikoSwap",
-  "short_name": "TaikoSwap",
+  "name": "SeiSwap",
+  "short_name": "SeiSwap",
   "start_url": ".",
   "theme_color": "#ff007a"
 }

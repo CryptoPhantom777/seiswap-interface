@@ -493,7 +493,7 @@ export default function Swap({ history }: RouteComponentProps) {
                           {/* we need to shorten this string on mobile */}
                           {approvalState === ApprovalState.APPROVED || signatureState === UseERC20PermitState.SIGNED
                             ? 'You can now trade ' + currencies[Field.INPUT]?.symbol
-                            : 'Allow the TaikoSwap Protocol to use your ' + currencies[Field.INPUT]?.symbol}
+                            : 'Allow the SeiSwap Protocol to use your ' + currencies[Field.INPUT]?.symbol}
                         </span>
                         {approvalState === ApprovalState.PENDING ? (
                           <Loader stroke="white" />
@@ -503,7 +503,7 @@ export default function Swap({ history }: RouteComponentProps) {
                         ) : (
                           <MouseoverTooltip
                             text={
-                              'You must give the TaikoSwap smart contracts permission to use your ' +
+                              'You must give the SeiSwap smart contracts permission to use your ' +
                               currencies[Field.INPUT]?.symbol +
                               '. You only have to do this once per token.'
                             }

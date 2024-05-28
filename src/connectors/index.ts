@@ -44,7 +44,7 @@ export const walletconnect = new WalletConnectConnector({
   supportedChainIds: SUPPORTED_CHAIN_IDS,
   rpc: {
     195: 'https://testrpc.xlayer.tech',
-    167000: 'https:rpc.taiko.xyz',
+    1329: 'https://evm-rpc.sei-apis.com',
   },
   // bridge: WALLETCONNECT_BRIDGE_URL,
   qrcode: true,
@@ -66,6 +66,6 @@ export const portis = new PortisConnector({
 // // mainnet only
 export const walletlink = new WalletLinkConnector({
   url: NETWORK_URLS[ChainId.MAINNET],
-  appName: 'TaikoSwap',
+  appName: 'SeiSwap',
   appLogoUrl: DIFFUSION_LOGO_URL,
 })

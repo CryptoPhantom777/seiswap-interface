@@ -189,7 +189,7 @@ export default function WalletModal({
             try {
               await provider.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0x28c58' }],
+                params: [{ chainId: '0x531' }],
               })
             } catch (switchError: any) {
               if (switchError.code === 4902) {
@@ -198,18 +198,18 @@ export default function WalletModal({
                     method: 'wallet_addEthereumChain',
                     params: [
                       {
-                        chainId: '0x28c58',
-                        chainName: 'Taiko',
+                        chainId: '0x531',
+                        chainName: 'Sei',
                         nativeCurrency: {
-                          name: 'Ether',
-                          symbol: 'ETH',
+                          name: 'Sei',
+                          symbol: 'SEI',
                           decimals: 18,
                         },
                         rpcUrls: [
                           // 'https://eth-rpc2.binary.host'
-                          'https://rpc.taiko.xyz',
+                          'https://evm-rpc.sei-apis.com',
                         ],
-                        blockExplorerUrls: ['https://taikoscan.network'],
+                        blockExplorerUrls: ['https://seitrace.com'],
                       },
                     ],
                   })

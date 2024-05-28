@@ -167,7 +167,7 @@ export const OSMOSIS = makeToken('Osmosis', 'OSMOSIS', 18, {
   [ChainId.TESTNET]: TESTNET.mockOSMOSIS,
   [ChainId.RINKEBY]: '0x7F2D8c2bb0cD4368C9f44198e0Cd1486cD5Ae1aA',
 })
-export const DIFFUSION = makeToken('TaikoSwap Token', 'TKOSWAP', 18, {
+export const DIFFUSION = makeToken('SeiSwap Token', 'SEISWAP', 18, {
   [ChainId.MAINNET]: '0xED197058A19E3A7C0D1aC402AaADEf22a0f31D0b',
   [ChainId.TESTNET]: TESTNET.diffusion || '0x067eC87844fBD73eDa4a1059F30039584586e09d',
   // Minichef Main Reward

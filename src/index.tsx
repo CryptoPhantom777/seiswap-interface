@@ -32,7 +32,7 @@ if (!!window.ethereum) {
   //     method: 'wallet_addEthereumChain',
   //     params: [
   //       {
-  //         chainId: '0x28c58',
+  //         chainId: '0x531',
   //         chainName: 'ETH',
   //         nativeCurrency: {
   //           name: 'ETH',
@@ -41,7 +41,7 @@ if (!!window.ethereum) {
   //         },
   //         rpcUrls: [
   //           // 'https://eth-rpc2.binary.host'
-  //           'https:rpc.taiko.xyz',
+  //           '',
   //         ],
   //         blockExplorerUrls: ['https://evm.eth.org'],
   //       },

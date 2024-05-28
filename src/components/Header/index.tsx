@@ -331,7 +331,7 @@ export default function Header() {
                         {'Telegram'}
                         <sup>↗</sup>
                     </StyledExternalLink>
-                    <StyledExternalLink id={`charts-nav-link`} href="https://x.com/TaikoSwap_">
+                    <StyledExternalLink id={`charts-nav-link`} href="https://x.com/SeiSwap_">
                         {'X'}
                         <sup>↗</sup>
                     </StyledExternalLink>
